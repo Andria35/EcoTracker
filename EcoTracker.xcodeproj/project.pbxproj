@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		104EB1562B1738EE006591A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB1552B1738EE006591A3 /* AppDelegate.swift */; };
 		104EB1582B1738EE006591A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB1572B1738EE006591A3 /* SceneDelegate.swift */; };
-		104EB15A2B1738EE006591A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB1592B1738EE006591A3 /* ViewController.swift */; };
 		104EB15F2B1738EF006591A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 104EB15E2B1738EF006591A3 /* Assets.xcassets */; };
 		104EB1622B1738EF006591A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 104EB1602B1738EF006591A3 /* LaunchScreen.storyboard */; };
 		104EB1742B173BF9006591A3 /* AirQualityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB1732B173BF9006591A3 /* AirQualityViewController.swift */; };
@@ -17,13 +16,14 @@
 		104EB1782B173C75006591A3 /* SpeciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB1772B173C75006591A3 /* SpeciesViewController.swift */; };
 		104EB17A2B173D3E006591A3 /* SolarResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB1792B173D3E006591A3 /* SolarResourcesViewController.swift */; };
 		104EB17C2B173D5C006591A3 /* PopulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17B2B173D5C006591A3 /* PopulationViewController.swift */; };
+		104EB17E2B173F21006591A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17D2B173F21006591A3 /* TabBarController.swift */; };
+		104EB1802B174595006591A3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17F2B174595006591A3 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		104EB1522B1738EE006591A3 /* EcoTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EcoTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		104EB1552B1738EE006591A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		104EB1572B1738EE006591A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		104EB1592B1738EE006591A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		104EB15E2B1738EF006591A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		104EB1612B1738EF006591A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		104EB1632B1738EF006591A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -32,6 +32,8 @@
 		104EB1772B173C75006591A3 /* SpeciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesViewController.swift; sourceTree = "<group>"; };
 		104EB1792B173D3E006591A3 /* SolarResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarResourcesViewController.swift; sourceTree = "<group>"; };
 		104EB17B2B173D5C006591A3 /* PopulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationViewController.swift; sourceTree = "<group>"; };
+		104EB17D2B173F21006591A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		104EB17F2B174595006591A3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +95,6 @@
 				104EB1702B173B5D006591A3 /* Species */,
 				104EB1712B173B73006591A3 /* SolarResources */,
 				104EB1722B173B8B006591A3 /* Population */,
-				104EB1592B1738EE006591A3 /* ViewController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -101,6 +102,7 @@
 		104EB16B2B173A3C006591A3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				104EB17F2B174595006591A3 /* UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -115,6 +117,7 @@
 		104EB16D2B173A62006591A3 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				104EB17D2B173F21006591A3 /* TabBarController.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -230,13 +233,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				104EB17A2B173D3E006591A3 /* SolarResourcesViewController.swift in Sources */,
-				104EB15A2B1738EE006591A3 /* ViewController.swift in Sources */,
 				104EB1762B173C59006591A3 /* WeatherViewController.swift in Sources */,
+				104EB17E2B173F21006591A3 /* TabBarController.swift in Sources */,
 				104EB17C2B173D5C006591A3 /* PopulationViewController.swift in Sources */,
 				104EB1742B173BF9006591A3 /* AirQualityViewController.swift in Sources */,
 				104EB1562B1738EE006591A3 /* AppDelegate.swift in Sources */,
 				104EB1582B1738EE006591A3 /* SceneDelegate.swift in Sources */,
 				104EB1782B173C75006591A3 /* SpeciesViewController.swift in Sources */,
+				104EB1802B174595006591A3 /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
