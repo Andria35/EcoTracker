@@ -12,5 +12,6 @@ final class SpeciesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
+        print("Hello world")
     }
 }
