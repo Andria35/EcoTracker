@@ -19,6 +19,7 @@
 		104EB17E2B173F21006591A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17D2B173F21006591A3 /* TabBarController.swift */; };
 		104EB1802B174595006591A3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17F2B174595006591A3 /* UIColor.swift */; };
 		104EB1832B174FF6006591A3 /* NetworkManager in Frameworks */ = {isa = PBXBuildFile; productRef = 104EB1822B174FF6006591A3 /* NetworkManager */; };
+		88C9AC182B17C3D7007CF170 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9AC172B17C3D6007CF170 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		104EB17B2B173D5C006591A3 /* PopulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationViewController.swift; sourceTree = "<group>"; };
 		104EB17D2B173F21006591A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		104EB17F2B174595006591A3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		88C9AC172B17C3D6007CF170 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		104EB16A2B173977006591A3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				88C9AC162B17C3A5007CF170 /* Custom */,
 				104EB16D2B173A62006591A3 /* TabBar */,
 				104EB16E2B173B17006591A3 /* AirQuality */,
 				104EB16F2B173B45006591A3 /* Weather */,
@@ -172,6 +175,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		88C9AC162B17C3A5007CF170 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				88C9AC172B17C3D6007CF170 /* CustomTextField.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -252,6 +263,7 @@
 				104EB1762B173C59006591A3 /* WeatherViewController.swift in Sources */,
 				104EB17E2B173F21006591A3 /* TabBarController.swift in Sources */,
 				104EB17C2B173D5C006591A3 /* PopulationViewController.swift in Sources */,
+				88C9AC182B17C3D7007CF170 /* CustomTextField.swift in Sources */,
 				104EB1742B173BF9006591A3 /* AirQualityViewController.swift in Sources */,
 				104EB1562B1738EE006591A3 /* AppDelegate.swift in Sources */,
 				104EB1582B1738EE006591A3 /* SceneDelegate.swift in Sources */,
