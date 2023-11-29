@@ -8,9 +8,11 @@
 import UIKit
 
 final class AirQualityViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.backgroundColor
     }
 }
+
+

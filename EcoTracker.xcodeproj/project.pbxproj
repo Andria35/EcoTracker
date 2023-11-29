@@ -18,6 +18,7 @@
 		104EB17C2B173D5C006591A3 /* PopulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17B2B173D5C006591A3 /* PopulationViewController.swift */; };
 		104EB17E2B173F21006591A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17D2B173F21006591A3 /* TabBarController.swift */; };
 		104EB1802B174595006591A3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17F2B174595006591A3 /* UIColor.swift */; };
+		104EB1832B174FF6006591A3 /* NetworkManager in Frameworks */ = {isa = PBXBuildFile; productRef = 104EB1822B174FF6006591A3 /* NetworkManager */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				104EB1832B174FF6006591A3 /* NetworkManager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,8 +72,7 @@
 				104EB16B2B173A3C006591A3 /* Extensions */,
 				104EB16C2B173A44006591A3 /* Models */,
 				104EB16A2B173977006591A3 /* Scenes */,
-				104EB15E2B1738EF006591A3 /* Assets.xcassets */,
-				104EB1602B1738EF006591A3 /* LaunchScreen.storyboard */,
+				104EB1842B175780006591A3 /* Resources */,
 				104EB1632B1738EF006591A3 /* Info.plist */,
 			);
 			path = EcoTracker;
@@ -162,6 +163,15 @@
 			path = Population;
 			sourceTree = "<group>";
 		};
+		104EB1842B175780006591A3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				104EB1602B1738EF006591A3 /* LaunchScreen.storyboard */,
+				104EB15E2B1738EF006591A3 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -178,6 +188,9 @@
 			dependencies = (
 			);
 			name = EcoTracker;
+			packageProductDependencies = (
+				104EB1822B174FF6006591A3 /* NetworkManager */,
+			);
 			productName = EcoTracker;
 			productReference = 104EB1522B1738EE006591A3 /* EcoTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -206,6 +219,9 @@
 				Base,
 			);
 			mainGroup = 104EB1492B1738EE006591A3;
+			packageReferences = (
+				104EB1812B174FF6006591A3 /* XCRemoteSwiftPackageReference "NetworkManager" */,
+			);
 			productRefGroup = 104EB1532B1738EE006591A3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -455,6 +471,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		104EB1812B174FF6006591A3 /* XCRemoteSwiftPackageReference "NetworkManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Andria35/NetworkManager.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		104EB1822B174FF6006591A3 /* NetworkManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 104EB1812B174FF6006591A3 /* XCRemoteSwiftPackageReference "NetworkManager" */;
+			productName = NetworkManager;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 104EB14A2B1738EE006591A3 /* Project object */;
 }
