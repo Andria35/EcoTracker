@@ -193,7 +193,12 @@ extension WeatherViewController: dataFetchDelegate {
         }
     }
 
-    func fetchFailed(error: Error) {
-        print (error)
+    func fetchFailed(error: Error) async {
+        await MainActor.run {let alert = UIAlertController(title: "Failed", message: "Please enter corect information", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            present(alert, animated: true)
+        }
     }
 }

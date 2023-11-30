@@ -9,7 +9,7 @@ import NetworkManager
 
 protocol dataFetchDelegate {
     func fetchCompleted() async
-    func fetchFailed(error: Error)
+    func fetchFailed(error: Error) async
 }
 
 class WeatherViewModel {
@@ -30,7 +30,7 @@ class WeatherViewModel {
                     await delegate?.fetchCompleted()
                 }
             } catch {
-                delegate?.fetchFailed(error: error)
+                await delegate?.fetchFailed(error: error)
             }
         }
     }
