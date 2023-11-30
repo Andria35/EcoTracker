@@ -187,8 +187,8 @@ final class WeatherViewController: UIViewController {
 }
 
 extension WeatherViewController: dataFetchDelegate {
-    func fetchCompleted() {
-        DispatchQueue.main.async {
+    func fetchCompleted() async {
+        await MainActor.run {
             self.reloadData()
         }
     }

@@ -8,7 +8,7 @@
 import NetworkManager
 
 protocol dataFetchDelegate {
-    func fetchCompleted()
+    func fetchCompleted() async
     func fetchFailed(error: Error)
 }
 
@@ -27,7 +27,7 @@ class WeatherViewModel {
                 
                 if let weatherFetchModel: WeatherDataModel = try await NetworkManager.shared.fetchData(fromURL: urlString) {
                     weatherInfo = weatherFetchModel
-                    delegate?.fetchCompleted()
+                    await delegate?.fetchCompleted()
                 }
             } catch {
                 delegate?.fetchFailed(error: error)
