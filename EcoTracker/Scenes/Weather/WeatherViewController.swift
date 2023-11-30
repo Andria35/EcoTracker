@@ -40,7 +40,7 @@ final class WeatherViewController: UIViewController {
     }
     
     // MARK: - StackView Setups
-    func setupGetInformationStackView() {
+    private func setupGetInformationStackView() {
         view.addSubview(getInformationStackView)
         
         getInformationStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -59,7 +59,7 @@ final class WeatherViewController: UIViewController {
         setupGetWeatherButton()
     }
     
-    func setupCoordinatesStackView() {
+    private func setupCoordinatesStackView() {
         getInformationStackView.addArrangedSubview(coordinatesStackView)
         coordinatesStackView.axis = .horizontal
         coordinatesStackView.distribution = .fillEqually
@@ -82,7 +82,7 @@ final class WeatherViewController: UIViewController {
     }
    
     // MARK: - Labels setups
-    func setupDegreeLabel() {
+    private func setupDegreeLabel() {
         view.addSubview(degreeLabel)
         degreeLabel.translatesAutoresizingMaskIntoConstraints = false
         degreeLabel.font = .systemFont(ofSize: 72, weight: .bold)
@@ -90,7 +90,7 @@ final class WeatherViewController: UIViewController {
         degreeLabel.text = "19°"
     }
     
-    func setupPlaceNameLabel() {
+    private func setupPlaceNameLabel() {
         view.addSubview(placeNameLabel)
         placeNameLabel.translatesAutoresizingMaskIntoConstraints = false
         placeNameLabel.font = .systemFont(ofSize: 24, weight: .bold)
@@ -98,14 +98,14 @@ final class WeatherViewController: UIViewController {
         placeNameLabel.text = "Tbilisi"
     }
 
-    func setupTypeTextLabel() {
+    private func setupTypeTextLabel() {
         getInformationStackView.addArrangedSubview(typeTextLabel)
         typeTextLabel.font = .systemFont(ofSize: 14, weight: .regular)
         typeTextLabel.textColor = .textColor
         typeTextLabel.text = "or type your city name"
     }
     
-    func setupEnterCoordinatesLabel() {
+    private func setupEnterCoordinatesLabel() {
         getInformationStackView.addArrangedSubview(enterCoordinatesLabel)
         enterCoordinatesLabel.font = .systemFont(ofSize: 16, weight: .bold)
         enterCoordinatesLabel.text = "Enter Coordinates"
@@ -113,23 +113,23 @@ final class WeatherViewController: UIViewController {
     }
     
     // MARK: - TextFields Setups
-    func setupTypeCityTextField() {
+    private func setupTypeCityTextField() {
         getInformationStackView.addArrangedSubview(typeCityTextField)
         typeCityTextField.placeholder = "Enter the city"
     }
     
-    func setupLatitudeTextField()  {
+    private func setupLatitudeTextField()  {
         coordinatesStackView.addArrangedSubview(latitudeTextField)
         latitudeTextField.placeholder = "Enter Latitude"
     }
     
-    func setupLongitudeTextField() {
+    private func setupLongitudeTextField() {
         coordinatesStackView.addArrangedSubview(longitudeTextField)
         longitudeTextField.placeholder = "Enter Longitude"
     }
     
     // MARK: - button Setup
-    func setupGetWeatherButton() {
+    private func setupGetWeatherButton() {
         getInformationStackView.addArrangedSubview(getWeatherButton)
         getWeatherButton.setTitle("Get Weather Forecast", for: .normal)
         getWeatherButton.layer.cornerRadius = 6
@@ -152,7 +152,7 @@ final class WeatherViewController: UIViewController {
     
     
     // MARK: - Constrains
-    func setupConstrains() {
+    private func setupConstrains() {
         NSLayoutConstraint.activate([
             degreeLabel.topAnchor.constraint(equalTo: placeNameLabel.bottomAnchor, constant: 8),
             degreeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
