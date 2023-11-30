@@ -19,6 +19,9 @@
 		104EB17E2B173F21006591A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17D2B173F21006591A3 /* TabBarController.swift */; };
 		104EB1802B174595006591A3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17F2B174595006591A3 /* UIColor.swift */; };
 		104EB1832B174FF6006591A3 /* NetworkManager in Frameworks */ = {isa = PBXBuildFile; productRef = 104EB1822B174FF6006591A3 /* NetworkManager */; };
+		EEB7EE172B1912BF00EEF557 /* AirQualityDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB7EE162B1912BF00EEF557 /* AirQualityDetailsViewController.swift */; };
+		EEB7EE192B1912F400EEF557 /* AirQualityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB7EE182B1912F400EEF557 /* AirQualityModel.swift */; };
+		EEB7EE1B2B19130900EEF557 /* AirQualityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB7EE1A2B19130900EEF557 /* AirQualityViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		104EB17B2B173D5C006591A3 /* PopulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationViewController.swift; sourceTree = "<group>"; };
 		104EB17D2B173F21006591A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		104EB17F2B174595006591A3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		EEB7EE162B1912BF00EEF557 /* AirQualityDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityDetailsViewController.swift; sourceTree = "<group>"; };
+		EEB7EE182B1912F400EEF557 /* AirQualityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AirQualityModel.swift; path = EcoTracker/Scenes/AirQuality/AirQualityModel.swift; sourceTree = SOURCE_ROOT; };
+		EEB7EE1A2B19130900EEF557 /* AirQualityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,7 @@
 		104EB16C2B173A44006591A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EEB7EE182B1912F400EEF557 /* AirQualityModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -127,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				104EB1732B173BF9006591A3 /* AirQualityViewController.swift */,
+				EEB7EE1A2B19130900EEF557 /* AirQualityViewModel.swift */,
+				EEB7EE1C2B19132C00EEF557 /* Details */,
 			);
 			path = AirQuality;
 			sourceTree = "<group>";
@@ -170,6 +179,14 @@
 				104EB15E2B1738EF006591A3 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		EEB7EE1C2B19132C00EEF557 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				EEB7EE162B1912BF00EEF557 /* AirQualityDetailsViewController.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,12 +266,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				104EB17A2B173D3E006591A3 /* SolarResourcesViewController.swift in Sources */,
+				EEB7EE192B1912F400EEF557 /* AirQualityModel.swift in Sources */,
 				104EB1762B173C59006591A3 /* WeatherViewController.swift in Sources */,
 				104EB17E2B173F21006591A3 /* TabBarController.swift in Sources */,
 				104EB17C2B173D5C006591A3 /* PopulationViewController.swift in Sources */,
 				104EB1742B173BF9006591A3 /* AirQualityViewController.swift in Sources */,
 				104EB1562B1738EE006591A3 /* AppDelegate.swift in Sources */,
+				EEB7EE172B1912BF00EEF557 /* AirQualityDetailsViewController.swift in Sources */,
 				104EB1582B1738EE006591A3 /* SceneDelegate.swift in Sources */,
+				EEB7EE1B2B19130900EEF557 /* AirQualityViewModel.swift in Sources */,
 				104EB1782B173C75006591A3 /* SpeciesViewController.swift in Sources */,
 				104EB1802B174595006591A3 /* UIColor.swift in Sources */,
 			);

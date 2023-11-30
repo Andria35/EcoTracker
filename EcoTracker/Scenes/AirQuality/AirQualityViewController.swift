@@ -356,6 +356,7 @@ final class AirQualityViewController: UIViewController {
     private func setup() {
         addSubviews()
         setupConstraints()
+        setupCheckAirQualityButtonAction()
     }
     
     private func addSubviews() {
@@ -476,5 +477,12 @@ final class AirQualityViewController: UIViewController {
         mainStackView.setCustomSpacing(16, after: ozoneStackView)
         mainStackView.setCustomSpacing(16, after: soStackView)
     }
+    
+    //TODO: - handle checkAirQualityButton.isEnabled = false
+    private func setupCheckAirQualityButtonAction() {
+        checkAirQualityButton.addAction(UIAction(title: "", handler: { [weak self] _ in
+            let detailsViewController = AirQualityDetailsViewController()
+            self?.navigationController?.pushViewController(detailsViewController, animated: true)
+        }), for: .touchUpInside)}
 }
 
