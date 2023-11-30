@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - CityResponce
-struct SpeciesCityResponce: Codable {
+struct SpeciesCityResponse: Codable {
     let results: [SpeciesCity]
 }
 

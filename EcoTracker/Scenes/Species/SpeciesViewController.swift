@@ -10,6 +10,8 @@ import UIKit
 final class SpeciesViewController: UIViewController {
     
     // MARK: - Class Properties
+    private let viewModel = SpeciesViewModel()
+    
     // MARK: - UI Components
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -39,6 +41,7 @@ final class SpeciesViewController: UIViewController {
     private let cityTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter Your City Name"
+        textField.textColor = UIColor.textColor
         textField.layer.cornerRadius = 6
         textField.layer.borderWidth = 1
         textField.layer.masksToBounds = true
@@ -65,6 +68,8 @@ final class SpeciesViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupConstraints()
+        setupActions()
+        setupDelegates()
     }
     // MARK: - Setup UI
     private func setupUI() {
@@ -82,6 +87,19 @@ final class SpeciesViewController: UIViewController {
     
     private func setupBackground() {
         view.backgroundColor = .backgroundColor
+    }
+    
+    // MARK: - Setup Actions
+    private func setupActions() {
+        setupFindSpeciesAction()
+    }
+    
+    private func setupFindSpeciesAction() {
+        findSpeciesButton.addAction(UIAction(handler: { [weak self] action in
+            Task {
+                await self?.viewModel.fetchCityId(by: self?.cityTextField.text ?? "")
+            }
+        }), for: .touchUpInside)
     }
     
     // MARK: - Setup Constraints
@@ -117,5 +135,33 @@ final class SpeciesViewController: UIViewController {
         findSpeciesButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 28).isActive = true
         findSpeciesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28).isActive = true
     }
+    
+    // MARK: - Setup Delegates
+    private func setupDelegates() {
+        viewModel.delegate = self
+    }
     // MARK: - Class Methods
+    private func displayAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+// MARK: - SpeciesViewModel Delegate
+extension SpeciesViewController: SpeciesViewModelDelegate {
+    func cityIdsFetched(_ cityIds: [SpeciesCity]) {
+        print(cityIds)
+    }
+    
+    func cityIdsNotFetched() {
+        displayAlert(title: "Invalid City Name!", message: "Please Input Existing City Name🙏")
+        cityTextField.text = ""
+    }
+    
+    func showError(_ error: Error) {
+        print(error)
+    }
+    
+    
 }
