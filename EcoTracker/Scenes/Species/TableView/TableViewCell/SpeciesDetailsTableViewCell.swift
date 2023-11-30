@@ -7,10 +7,15 @@
 
 import UIKit
 
+protocol SpeciesDetailsTableViewCellViewModelDelegate: AnyObject {
+    func imageFetched(image: UIImage)
+}
+
 final class SpeciesDetailsTableViewCell: UITableViewCell {
     
     // MARK: - Class Properties
     static let cellId = "SpeciesDetailsCell"
+    private let viewModel = SpeciesDetailsTableViewCellViewModel()
     
     // MARK: - UI Components
     private let mainStackView: UIStackView = {
@@ -129,10 +134,25 @@ final class SpeciesDetailsTableViewCell: UITableViewCell {
         mainImageView.widthAnchor.constraint(equalToConstant: self.frame.width * 0.2).isActive = true
     }
     
+    // MARK: Setup Delegates
+    private func setupDelegates() {
+        viewModel.delegate = self
+    }
+    
     // MARK: - Class Methods
     func configure(with specieDetails: SpecieDetails) {
-        nameLabel.text = specieDetails.taxon.name
-//        authorLabel.text = specieDetails.
+//        nameLabel.text = specieDetails.taxon.name
+        print(specieDetails.taxon)
+//        Task {
+//            await viewModel.fetchImage(urlString: s)
+//        }
+        //        authorLabel.text = specieDetails.
     }
 }
 
+// MARK: - SpeciesDetailsTableViewCellViewModelDelegate
+extension SpeciesDetailsTableViewCell: SpeciesDetailsTableViewCellViewModelDelegate {
+    func imageFetched(image: UIImage) {
+        mainImageView.image = image
+    }
+}

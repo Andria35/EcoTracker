@@ -7,38 +7,27 @@
 
 import Foundation
 
-// MARK: - CityDetailsResponse
-struct SpeciesDetailsResponse: Decodable {
+// MARK: - SpeciesDetailsResponse
+struct SpeciesDetailsResponse: Codable {
     let results: [SpecieDetails]
 }
-
-// MARK: - Result
-struct SpecieDetails: Decodable {
+ 
+// MARK: - SpecieDetails
+struct SpecieDetails: Codable {
     let taxon: SpecieAttributes
-   }
-
-// MARK: - Taxon
-struct SpecieAttributes: Decodable {
-    let name: String
-    let defaultPhoto: DefaultPhoto?
-    let wikipediaURL: String?
-//
-    enum CodingKeys: String, CodingKey {
-        case name
-        case defaultPhoto = "default_photo"
-        case wikipediaURL = "wikipedia_url"
-    }
 }
-
+ 
+// MARK: - SpecieAttributes
+struct SpecieAttributes: Codable {
+    let name: String
+    let defaultPhoto: DefaultPhoto
+    let wikipediaUrl: String?
+}
+ 
 // MARK: - DefaultPhoto
-struct DefaultPhoto: Decodable {
+struct DefaultPhoto: Codable {
     let attribution: String
     let url: String
-    let squareURL, mediumURL: String
-
-    enum CodingKeys: String, CodingKey {
-        case attribution, url
-        case squareURL = "square_url"
-        case mediumURL = "medium_url"
-    }
+    let squareUrl: String
+    let mediumUrl: String
 }
