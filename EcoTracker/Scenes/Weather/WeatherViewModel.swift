@@ -7,7 +7,7 @@
 
 import NetworkManager
 
-protocol dataFetchDelegate {
+protocol DataFetchDelegate {
     func fetchCompleted() async
     func fetchFailed(error: Error) async
 }
@@ -18,7 +18,7 @@ class WeatherViewModel {
     
     
     var weatherInfo: WeatherDataModel? = nil
-    var delegate: dataFetchDelegate? = nil
+    var delegate: DataFetchDelegate? = nil
     
     func fetchData(long: String, lat: String, cityName: String) {
         Task {
