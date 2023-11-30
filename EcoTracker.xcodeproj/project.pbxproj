@@ -19,6 +19,10 @@
 		104EB17E2B173F21006591A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17D2B173F21006591A3 /* TabBarController.swift */; };
 		104EB1802B174595006591A3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17F2B174595006591A3 /* UIColor.swift */; };
 		104EB1832B174FF6006591A3 /* NetworkManager in Frameworks */ = {isa = PBXBuildFile; productRef = 104EB1822B174FF6006591A3 /* NetworkManager */; };
+		D5F6D2482B17D02400CE8932 /* PopulationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F6D2472B17D02400CE8932 /* PopulationViewModel.swift */; };
+		D5F6D24A2B17D03500CE8932 /* CountriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F6D2492B17D03500CE8932 /* CountriesModel.swift */; };
+		D5F6D24D2B17E6D500CE8932 /* PopulationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F6D24C2B17E6D500CE8932 /* PopulationDetailsViewController.swift */; };
+		D5F6D2512B191E5F00CE8932 /* PopulationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F6D2502B191E5F00CE8932 /* PopulationDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,10 @@
 		104EB17B2B173D5C006591A3 /* PopulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationViewController.swift; sourceTree = "<group>"; };
 		104EB17D2B173F21006591A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		104EB17F2B174595006591A3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		D5F6D2472B17D02400CE8932 /* PopulationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationViewModel.swift; sourceTree = "<group>"; };
+		D5F6D2492B17D03500CE8932 /* CountriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountriesModel.swift; path = EcoTracker/Scenes/Population/CountriesModel.swift; sourceTree = SOURCE_ROOT; };
+		D5F6D24C2B17E6D500CE8932 /* PopulationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationDetailsViewController.swift; sourceTree = "<group>"; };
+		D5F6D2502B191E5F00CE8932 /* PopulationDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationDetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +119,7 @@
 		104EB16C2B173A44006591A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D5F6D2492B17D03500CE8932 /* CountriesModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -158,7 +167,8 @@
 		104EB1722B173B8B006591A3 /* Population */ = {
 			isa = PBXGroup;
 			children = (
-				104EB17B2B173D5C006591A3 /* PopulationViewController.swift */,
+				D5F6D24E2B17E6DF00CE8932 /* Population */,
+				D5F6D24F2B17E6ED00CE8932 /* Details */,
 			);
 			path = Population;
 			sourceTree = "<group>";
@@ -170,6 +180,24 @@
 				104EB15E2B1738EF006591A3 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		D5F6D24E2B17E6DF00CE8932 /* Population */ = {
+			isa = PBXGroup;
+			children = (
+				104EB17B2B173D5C006591A3 /* PopulationViewController.swift */,
+				D5F6D2472B17D02400CE8932 /* PopulationViewModel.swift */,
+			);
+			path = Population;
+			sourceTree = "<group>";
+		};
+		D5F6D24F2B17E6ED00CE8932 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				D5F6D24C2B17E6D500CE8932 /* PopulationDetailsViewController.swift */,
+				D5F6D2502B191E5F00CE8932 /* PopulationDetailsViewModel.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,13 +276,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5F6D24A2B17D03500CE8932 /* CountriesModel.swift in Sources */,
 				104EB17A2B173D3E006591A3 /* SolarResourcesViewController.swift in Sources */,
 				104EB1762B173C59006591A3 /* WeatherViewController.swift in Sources */,
 				104EB17E2B173F21006591A3 /* TabBarController.swift in Sources */,
+				D5F6D24D2B17E6D500CE8932 /* PopulationDetailsViewController.swift in Sources */,
 				104EB17C2B173D5C006591A3 /* PopulationViewController.swift in Sources */,
 				104EB1742B173BF9006591A3 /* AirQualityViewController.swift in Sources */,
 				104EB1562B1738EE006591A3 /* AppDelegate.swift in Sources */,
 				104EB1582B1738EE006591A3 /* SceneDelegate.swift in Sources */,
+				D5F6D2482B17D02400CE8932 /* PopulationViewModel.swift in Sources */,
+				D5F6D2512B191E5F00CE8932 /* PopulationDetailsViewModel.swift in Sources */,
 				104EB1782B173C75006591A3 /* SpeciesViewController.swift in Sources */,
 				104EB1802B174595006591A3 /* UIColor.swift in Sources */,
 			);

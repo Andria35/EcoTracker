@@ -9,7 +9,10 @@ import UIKit
 
 final class PopulationViewController: UIViewController {
     
-    private let countries = ["Germany", "Spain", "Italy", "Switzerland"]
+    private var countries: [String] = []
+    private let viewModel = PopulationViewModel()
+    private var populationData = PopulationData(totalPopulation: [])
+    var selectedCountry: String?
     
     //MARK: - UI Elements
     
@@ -58,15 +61,22 @@ final class PopulationViewController: UIViewController {
         return button
     }()
     
+    
     //MARK: - LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        setupConstraints()
+        setup()
     }
     
     //MARK: - UI Setup
+    
+    private func setup() {
+        setupUI()
+        setupConstraints()
+        setupButton()
+        viewModel.delegate = self
+    }
     
     private func setupUI() {
         view.backgroundColor = .backgroundColor
@@ -96,10 +106,46 @@ final class PopulationViewController: UIViewController {
     private func setupPickerView() {
         pickerView.delegate = self
         pickerView.dataSource = self
-        selectedCountryTextField.inputView = pickerView
+        setupPickerCountries()
     }
     
+    private func setupPickerCountries() {
+        Task {
+            do {
+                try await viewModel.viewDidLoad()
+                await MainActor.run {
+                    self.pickerView.reloadAllComponents()
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    private func setupButton() {
+        populationButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.buttonTapped()
+        }), for: .touchUpInside)
+    }
+    
+    private func buttonTapped() {
+        Task {
+            do {
+                let populationData = try await viewModel.getCountriesPopulation(for: selectedCountry ?? "Georgia")
+                let pushedVC = PopulationDetailsViewController()
+                pushedVC.populationData = populationData
+                pushedVC.country = selectedCountryTextField.text
+                navigationController?.pushViewController(pushedVC, animated: true)
+            } catch {
+                print("Error fetching population data: \(error)")
+            }
+        }
+    }
+    
+    
 }
+
+//MARK: - Extension: UIPickerViewDelegate
 
 extension PopulationViewController: UIPickerViewDelegate {
     
@@ -122,8 +168,11 @@ extension PopulationViewController: UIPickerViewDelegate {
         selectedCountryTextField.text = selectedCountry
         selectedCountryTextField.textColor = .textColor
         selectedCountryTextField.resignFirstResponder()
+        viewModel.selectedCountry = selectedCountry
     }
 }
+
+//MARK: - Extension: UIPickerViewDataSource
 
 extension PopulationViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -135,3 +184,25 @@ extension PopulationViewController: UIPickerViewDataSource {
     }
     
 }
+
+//MARK: - Extension: PopulationViewModelDelegate
+
+extension PopulationViewController: PopulationViewModelDelegate {
+    
+    func didFetchPopulation(_ population: PopulationData) {
+        self.populationData = population
+    }
+    
+    
+    func didFetchCountries(_ countries: CountryResponse) {
+        self.countries = countries.countries
+        DispatchQueue.main.async{
+            self.selectedCountryTextField.inputView = self.pickerView
+        }
+    }
+    
+}
+
+
+
+
