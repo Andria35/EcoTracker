@@ -150,8 +150,9 @@ final class SpeciesViewController: UIViewController {
 
 // MARK: - SpeciesViewModel Delegate
 extension SpeciesViewController: SpeciesViewModelDelegate {
-    func cityIdsFetched(_ cityIds: [SpeciesCity]) {
-        print(cityIds)
+    func cityIdsFetched(_ cityIds: [Int]) {
+        let nextVC = SpeciesDetailsViewController(cityIds: cityIds)
+        navigationController?.pushViewController(nextVC, animated: true)
     }
     
     func cityIdsNotFetched() {

@@ -23,6 +23,9 @@
 		10AC721A2B18762300453851 /* SpeciesCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC72192B18762300453851 /* SpeciesCity.swift */; };
 		10AC721D2B1891C100453851 /* SpeciesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC721C2B1891C100453851 /* SpeciesDetailsViewController.swift */; };
 		10AC721F2B18923A00453851 /* SpeciesDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC721E2B18923A00453851 /* SpeciesDetails.swift */; };
+		10AC72222B18A33F00453851 /* SpeciesDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC72212B18A33F00453851 /* SpeciesDetailsTableViewCell.swift */; };
+		10AC72242B18C34000453851 /* SpeciesDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC72232B18C34000453851 /* SpeciesDetailsViewModel.swift */; };
+		10AC72262B18E37400453851 /* SpeciesDetailsTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC72252B18E37400453851 /* SpeciesDetailsTableViewCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,9 @@
 		10AC72192B18762300453851 /* SpeciesCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesCity.swift; sourceTree = "<group>"; };
 		10AC721C2B1891C100453851 /* SpeciesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesDetailsViewController.swift; sourceTree = "<group>"; };
 		10AC721E2B18923A00453851 /* SpeciesDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesDetails.swift; sourceTree = "<group>"; };
+		10AC72212B18A33F00453851 /* SpeciesDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		10AC72232B18C34000453851 /* SpeciesDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesDetailsViewModel.swift; sourceTree = "<group>"; };
+		10AC72252B18E37400453851 /* SpeciesDetailsTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesDetailsTableViewCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,9 +193,20 @@
 		10AC721B2B18916600453851 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				10AC72202B18A30C00453851 /* TableViewCell */,
 				10AC721C2B1891C100453851 /* SpeciesDetailsViewController.swift */,
+				10AC72232B18C34000453851 /* SpeciesDetailsViewModel.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		10AC72202B18A30C00453851 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				10AC72212B18A33F00453851 /* SpeciesDetailsTableViewCell.swift */,
+				10AC72252B18E37400453851 /* SpeciesDetailsTableViewCellViewModel.swift */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,16 +286,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				10AC721A2B18762300453851 /* SpeciesCity.swift in Sources */,
+				10AC72242B18C34000453851 /* SpeciesDetailsViewModel.swift in Sources */,
 				10AC721F2B18923A00453851 /* SpeciesDetails.swift in Sources */,
 				104EB17A2B173D3E006591A3 /* SolarResourcesViewController.swift in Sources */,
 				104EB1762B173C59006591A3 /* WeatherViewController.swift in Sources */,
 				104EB17E2B173F21006591A3 /* TabBarController.swift in Sources */,
+				10AC72262B18E37400453851 /* SpeciesDetailsTableViewCellViewModel.swift in Sources */,
 				104EB17C2B173D5C006591A3 /* PopulationViewController.swift in Sources */,
 				104EB1742B173BF9006591A3 /* AirQualityViewController.swift in Sources */,
 				10AC72182B18743100453851 /* SpeciesViewModel.swift in Sources */,
 				104EB1562B1738EE006591A3 /* AppDelegate.swift in Sources */,
 				104EB1582B1738EE006591A3 /* SceneDelegate.swift in Sources */,
 				104EB1782B173C75006591A3 /* SpeciesViewController.swift in Sources */,
+				10AC72222B18A33F00453851 /* SpeciesDetailsTableViewCell.swift in Sources */,
 				10AC721D2B1891C100453851 /* SpeciesDetailsViewController.swift in Sources */,
 				104EB1802B174595006591A3 /* UIColor.swift in Sources */,
 			);

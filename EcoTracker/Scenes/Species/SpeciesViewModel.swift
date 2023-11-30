@@ -9,7 +9,7 @@ import Foundation
 import NetworkManager
 
 protocol SpeciesViewModelDelegate: AnyObject {
-    func cityIdsFetched(_ cityIds: [SpeciesCity])
+    func cityIdsFetched(_ cityIds: [Int])
     func cityIdsNotFetched() // this method is called when user inputs invalid city name
     func showError(_ error: Error)
 }
@@ -43,8 +43,16 @@ final class SpeciesViewModel {
         if cityIds.isEmpty {
             delegate?.cityIdsNotFetched()
         } else {
-            delegate?.cityIdsFetched(cityIds)
+            delegate?.cityIdsFetched(makeCityIdArray())
         }
+    }
+    
+    private func makeCityIdArray() -> [Int] {
+        var cityIdArray: [Int] = []
+        for cityId in cityIds {
+            cityIdArray.append(cityId.id)
+        }
+        return cityIdArray
     }
 
 }

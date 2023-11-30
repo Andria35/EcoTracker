@@ -9,12 +9,14 @@ import UIKit
 
 final class SpeciesDetailsViewController: UIViewController {
     // MARK: - Class Properties
-    private let speciesDetails = [SpeciesDetails]()
+    private var speciesDetails = [SpecieDetails]()
+    private let viewModel: SpeciesDetailsViewModel
     
     // MARK: - UI Components
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = UIColor.backgroundColor
         return tableView
     }()
     
@@ -23,7 +25,19 @@ final class SpeciesDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        setupConstraints()
+        setupDelegates()
+        viewModel.viewDidLoad()
     }
+    
+    init(cityIds: [Int]) {
+        viewModel = SpeciesDetailsViewModel(cityIds: cityIds)
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     
     // MARK: - Setup UI
     private func setupUI() {
@@ -42,7 +56,7 @@ final class SpeciesDetailsViewController: UIViewController {
     
     private func setupTableView() {
         tableView.dataSource = self
-//        tableView.register(HomePageTableViewCell.self, forCellReuseIdentifier: HomePageTableViewCell.cellId)
+        tableView.register(SpeciesDetailsTableViewCell.self, forCellReuseIdentifier: SpeciesDetailsTableViewCell.cellId)
     }
     
     // MARK: - Setup Constraints
@@ -59,23 +73,45 @@ final class SpeciesDetailsViewController: UIViewController {
         ])
     }
     
+    // MARK: - Setup Delegates
+    private func setupDelegates() {
+        viewModel.delegate = self
+    }
+    
     // MARK: - Class Methods
 }
 
 // MARK: - TableView DataSource
 extension SpeciesDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        catFacts.count
-        10
+        speciesDetails.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        250
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
-//        let catFact = catFacts[indexPath.row].fact
-//        cell = tableView.dequeueReusableCell(withIdentifier: HomePageTableViewCell.cellId, for: indexPath)
-//        if let cell = cell as? HomePageTableViewCell {
-//            cell.configure(with: catFact)
-//        }
+        let specieDetails = speciesDetails[indexPath.row]
+        cell = tableView.dequeueReusableCell(withIdentifier: SpeciesDetailsTableViewCell.cellId, for: indexPath)
+        if let cell = cell as? SpeciesDetailsTableViewCell {
+            cell.configure(with: specieDetails)
+        }
         return cell
     }
+}
+
+// MARK: - SpeciesDetailsViewModelDelegate
+extension SpeciesDetailsViewController: SpeciesDetailsViewModelDelegate {
+    func speciesDetailsFetched(speciesDetails: [SpecieDetails]) {
+        self.speciesDetails = speciesDetails
+        tableView.reloadData()
+    }
+    
+    func showError(_ error: Error) {
+        print(error)
+    }
+    
+    
 }
