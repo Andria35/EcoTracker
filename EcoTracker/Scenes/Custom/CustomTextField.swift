@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomTextField: UITextField {
+final class CustomTextField: UITextField {
     private let padding = UIEdgeInsets(top: 17, left: 16, bottom: 17, right: 16)
     
     override init(frame: CGRect) {
@@ -29,15 +29,15 @@ class CustomTextField: UITextField {
         font = .systemFont(ofSize: 12)
     }
     
-    override open func textRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: padding)
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        bounds.inset(by: padding)
     }
     
-    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: padding)
+    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        bounds.inset(by: padding)
     }
     
-    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: padding)
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        bounds.inset(by: padding)
     }
 }
