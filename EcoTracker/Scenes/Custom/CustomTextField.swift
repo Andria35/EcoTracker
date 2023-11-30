@@ -22,11 +22,11 @@ class CustomTextField: UITextField {
     
     private func setup() {
         layer.borderWidth = 1
-        // TODO: - use .textfieldBackgroundColor instead
         layer.borderColor = UIColor(red: 0.306, green: 0.416, blue: 1, alpha: 0.5).cgColor
         layer.cornerRadius = 6
         
         font = .systemFont(ofSize: 12)
+        textColor = .white
     }
     
     override open func textRect(forBounds bounds: CGRect) -> CGRect {

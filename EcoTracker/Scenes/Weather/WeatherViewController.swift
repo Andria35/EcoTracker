@@ -8,6 +8,8 @@
 import UIKit
 
 final class WeatherViewController: UIViewController {
+    
+    private let weatherViewModel = WeatherViewModel()
 
     private let latitudeTextField = CustomTextField()
     private let longitudeTextField = CustomTextField()
@@ -16,19 +18,24 @@ final class WeatherViewController: UIViewController {
     private let degreeLabel = UILabel()
     private let placeNameLabel = UILabel()
     private let weatherDescription = UILabel()
-    private let weahtherTypeLabel = UILabel()
     private let typeCityTextField = CustomTextField()
     private let enterCoordinatesLabel = UILabel()
     private let getInformationStackView = UIStackView()
     private let coordinatesStackView = UIStackView()
+    private let imagestackView = UIStackView()
+    private let weatherImage = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
         
+        weatherViewModel.delegate = self
+        
         setupDegreeLabel()
         setupPlaceNameLabel()
         setupGetInformationStackView()
+        seupImageStackView()
+        setupWeatherImage()
         setupConstrains()
     }
     
@@ -60,6 +67,18 @@ final class WeatherViewController: UIViewController {
         
         setupLatitudeTextField()
         setupLongitudeTextField()
+    }
+    
+    func seupImageStackView() {
+        view.addSubview(imagestackView)
+        imagestackView.translatesAutoresizingMaskIntoConstraints = false
+        imagestackView.alignment = .center
+    }
+    
+    // MARK: - Setup image
+    func setupWeatherImage() {
+        imagestackView.addArrangedSubview(weatherImage)
+        weatherImage.image = UIImage(named: "sunny-cloudy")
     }
    
     // MARK: - Labels setups
@@ -116,7 +135,21 @@ final class WeatherViewController: UIViewController {
         getWeatherButton.layer.cornerRadius = 6
         getWeatherButton.backgroundColor = .buttonBackgroundColor
         getWeatherButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
+        
+        getWeatherButton.addAction(UIAction(handler: { action in
+            let cityName = self.typeCityTextField.text
+            let long = self.longitudeTextField.text
+            let lat = self.latitudeTextField.text
+            
+            if cityName == "" && (long == "" || lat == "") {
+               print ("Please enter correct info")
+            } else {
+                self.weatherViewModel.fetchData(long: long ?? "", lat: lat ?? "", cityName: cityName ?? "")
+            }
+        }), for: .touchUpInside)
     }
+    
+    
     
     // MARK: - Constrains
     func setupConstrains() {
@@ -131,6 +164,9 @@ final class WeatherViewController: UIViewController {
             getInformationStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             getInformationStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
+            imagestackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
+            imagestackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
             coordinatesStackView.leadingAnchor.constraint(equalTo: getInformationStackView.leadingAnchor, constant: 12),
             coordinatesStackView.trailingAnchor.constraint(equalTo: getInformationStackView.trailingAnchor, constant: -12),
             
@@ -140,6 +176,24 @@ final class WeatherViewController: UIViewController {
             getWeatherButton.heightAnchor.constraint(equalToConstant: 48),
             getWeatherButton.leadingAnchor.constraint(equalTo: getInformationStackView.leadingAnchor, constant: 12),
             getWeatherButton.trailingAnchor.constraint(equalTo: getInformationStackView.trailingAnchor, constant: -12),
+
         ])
+    }
+
+    func reloadData() {
+        degreeLabel.text = "\(weatherViewModel.weatherInfo?.main.temp ?? 0)°"
+        placeNameLabel.text = weatherViewModel.weatherInfo?.name
+    }
+}
+
+extension WeatherViewController: dataFetchDelegate {
+    func fetchCompleted() {
+        DispatchQueue.main.async {
+            self.reloadData()
+        }
+    }
+
+    func fetchFailed(error: Error) {
+        print (error)
     }
 }

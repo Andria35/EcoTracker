@@ -20,6 +20,10 @@
 		104EB1802B174595006591A3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17F2B174595006591A3 /* UIColor.swift */; };
 		104EB1832B174FF6006591A3 /* NetworkManager in Frameworks */ = {isa = PBXBuildFile; productRef = 104EB1822B174FF6006591A3 /* NetworkManager */; };
 		88C9AC182B17C3D7007CF170 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9AC172B17C3D6007CF170 /* CustomTextField.swift */; };
+		88C9AC1A2B1860F2007CF170 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9AC192B1860F2007CF170 /* WeatherModel.swift */; };
+		88C9AC1C2B18610A007CF170 /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9AC1B2B18610A007CF170 /* WeatherDataModel.swift */; };
+		88C9AC1E2B186178007CF170 /* WeatherMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9AC1D2B186178007CF170 /* WeatherMainModel.swift */; };
+		88C9AC222B1861CF007CF170 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9AC212B1861CF007CF170 /* WeatherViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +41,10 @@
 		104EB17D2B173F21006591A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		104EB17F2B174595006591A3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		88C9AC172B17C3D6007CF170 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		88C9AC192B1860F2007CF170 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherModel.swift; path = EcoTracker/Scenes/Custom/WeatherModel.swift; sourceTree = SOURCE_ROOT; };
+		88C9AC1B2B18610A007CF170 /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherDataModel.swift; path = EcoTracker/Scenes/Custom/WeatherDataModel.swift; sourceTree = SOURCE_ROOT; };
+		88C9AC1D2B186178007CF170 /* WeatherMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherMainModel.swift; path = EcoTracker/Scenes/Custom/WeatherMainModel.swift; sourceTree = SOURCE_ROOT; };
+		88C9AC212B1861CF007CF170 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +122,9 @@
 		104EB16C2B173A44006591A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				88C9AC192B1860F2007CF170 /* WeatherModel.swift */,
+				88C9AC1B2B18610A007CF170 /* WeatherDataModel.swift */,
+				88C9AC1D2B186178007CF170 /* WeatherMainModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -138,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				104EB1752B173C59006591A3 /* WeatherViewController.swift */,
+				88C9AC212B1861CF007CF170 /* WeatherViewModel.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -261,14 +273,18 @@
 			files = (
 				104EB17A2B173D3E006591A3 /* SolarResourcesViewController.swift in Sources */,
 				104EB1762B173C59006591A3 /* WeatherViewController.swift in Sources */,
+				88C9AC1E2B186178007CF170 /* WeatherMainModel.swift in Sources */,
+				88C9AC222B1861CF007CF170 /* WeatherViewModel.swift in Sources */,
 				104EB17E2B173F21006591A3 /* TabBarController.swift in Sources */,
 				104EB17C2B173D5C006591A3 /* PopulationViewController.swift in Sources */,
 				88C9AC182B17C3D7007CF170 /* CustomTextField.swift in Sources */,
 				104EB1742B173BF9006591A3 /* AirQualityViewController.swift in Sources */,
 				104EB1562B1738EE006591A3 /* AppDelegate.swift in Sources */,
 				104EB1582B1738EE006591A3 /* SceneDelegate.swift in Sources */,
+				88C9AC1C2B18610A007CF170 /* WeatherDataModel.swift in Sources */,
 				104EB1782B173C75006591A3 /* SpeciesViewController.swift in Sources */,
 				104EB1802B174595006591A3 /* UIColor.swift in Sources */,
+				88C9AC1A2B1860F2007CF170 /* WeatherModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
