@@ -136,15 +136,15 @@ final class WeatherViewController: UIViewController {
         getWeatherButton.backgroundColor = .buttonBackgroundColor
         getWeatherButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
         
-        getWeatherButton.addAction(UIAction(handler: { action in
-            let cityName = self.typeCityTextField.text
-            let long = self.longitudeTextField.text
-            let lat = self.latitudeTextField.text
+        getWeatherButton.addAction(UIAction(handler: { [weak self] _ in
+            let cityName = self?.typeCityTextField.text
+            let long = self?.longitudeTextField.text
+            let lat = self?.latitudeTextField.text
             
             if cityName == "" && (long == "" || lat == "") {
                print ("Please enter correct info")
             } else {
-                self.weatherViewModel.fetchData(long: long ?? "", lat: lat ?? "", cityName: cityName ?? "")
+                self?.weatherViewModel.fetchData(long: long ?? "", lat: lat ?? "", cityName: cityName ?? "")
             }
         }), for: .touchUpInside)
     }
@@ -194,9 +194,10 @@ extension WeatherViewController: DataFetchDelegate {
     }
 
     func fetchFailed(error: Error) async {
-        await MainActor.run {let alert = UIAlertController(title: "Failed", message: "Please enter corect information", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-                self.dismiss(animated: true, completion: nil)
+        await MainActor.run {
+            let alert = UIAlertController(title: "Failed", message: "Please enter corect information", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
             }))
             present(alert, animated: true)
         }
