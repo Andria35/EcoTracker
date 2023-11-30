@@ -19,6 +19,8 @@
 		104EB17E2B173F21006591A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17D2B173F21006591A3 /* TabBarController.swift */; };
 		104EB1802B174595006591A3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17F2B174595006591A3 /* UIColor.swift */; };
 		104EB1832B174FF6006591A3 /* NetworkManager in Frameworks */ = {isa = PBXBuildFile; productRef = 104EB1822B174FF6006591A3 /* NetworkManager */; };
+		10AC72182B18743100453851 /* SpeciesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC72172B18743100453851 /* SpeciesViewModel.swift */; };
+		10AC721A2B18762300453851 /* SpeciesCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC72192B18762300453851 /* SpeciesCity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		104EB17B2B173D5C006591A3 /* PopulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationViewController.swift; sourceTree = "<group>"; };
 		104EB17D2B173F21006591A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		104EB17F2B174595006591A3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		10AC72172B18743100453851 /* SpeciesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesViewModel.swift; sourceTree = "<group>"; };
+		10AC72192B18762300453851 /* SpeciesCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesCity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 		104EB16C2B173A44006591A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				10AC72192B18762300453851 /* SpeciesCity.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				104EB1772B173C75006591A3 /* SpeciesViewController.swift */,
+				10AC72172B18743100453851 /* SpeciesViewModel.swift */,
 			);
 			path = Species;
 			sourceTree = "<group>";
@@ -248,11 +254,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10AC721A2B18762300453851 /* SpeciesCity.swift in Sources */,
 				104EB17A2B173D3E006591A3 /* SolarResourcesViewController.swift in Sources */,
 				104EB1762B173C59006591A3 /* WeatherViewController.swift in Sources */,
 				104EB17E2B173F21006591A3 /* TabBarController.swift in Sources */,
 				104EB17C2B173D5C006591A3 /* PopulationViewController.swift in Sources */,
 				104EB1742B173BF9006591A3 /* AirQualityViewController.swift in Sources */,
+				10AC72182B18743100453851 /* SpeciesViewModel.swift in Sources */,
 				104EB1562B1738EE006591A3 /* AppDelegate.swift in Sources */,
 				104EB1582B1738EE006591A3 /* SceneDelegate.swift in Sources */,
 				104EB1782B173C75006591A3 /* SpeciesViewController.swift in Sources */,
