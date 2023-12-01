@@ -76,7 +76,7 @@ final class AirQualityViewController: UIViewController {
         textField.layer.cornerRadius = 6
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.textfieldStrokeColor.cgColor
-        textField.backgroundColor = UIColor.textfieldBackgroundColor
+        textField.backgroundColor = UIColor.textFieldBackgroundColor
         textField.textColor = UIColor.white
         textField.attributedPlaceholder = NSAttributedString(
             string: "Enter Any Location",
