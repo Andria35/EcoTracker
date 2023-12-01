@@ -63,7 +63,7 @@ final class WeatherViewController: UIViewController {
         getInformationStackView.addArrangedSubview(coordinatesStackView)
         coordinatesStackView.axis = .horizontal
         coordinatesStackView.distribution = .fillEqually
-        coordinatesStackView.spacing = 11
+        coordinatesStackView.spacing = 12
         
         setupLatitudeTextField()
         setupLongitudeTextField()
