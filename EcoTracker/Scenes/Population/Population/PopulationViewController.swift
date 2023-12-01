@@ -40,7 +40,7 @@ final class PopulationViewController: UIViewController {
         textField.layer.borderWidth = 1.0
         textField.layer.borderColor = UIColor.textfieldStrokeColor.cgColor
         textField.layer.cornerRadius = 6.0
-        textField.backgroundColor = UIColor.textfieldBackgroundColor
+        textField.backgroundColor = UIColor.textFieldBackgroundColor
         textField.inputView = UIPickerView()
         let placeholderAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.gray
