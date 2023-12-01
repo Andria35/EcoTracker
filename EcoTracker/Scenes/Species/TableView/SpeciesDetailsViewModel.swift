@@ -17,7 +17,7 @@ final class SpeciesDetailsViewModel {
     
     // MARK: - Class Properties
     let cityIds: [Int]
-    var SpeciesDetails: [SpecieDetails] = []
+    var speciesDetails: [SpecieDetails] = []
     weak var delegate: SpeciesDetailsViewModelDelegate?
     
     // MARK: LifeCycles
@@ -37,7 +37,7 @@ final class SpeciesDetailsViewModel {
         let urlString = "https://api.inaturalist.org/v1/observations/species_counts?place_id=\(cityId)"
         do {
             let speciesDetailsResponse: SpeciesDetailsResponse = try await NetworkManager.shared.fetchData(fromURL: urlString)
-            SpeciesDetails = speciesDetailsResponse.results
+            speciesDetails = speciesDetailsResponse.results
             await MainActor.run{
                 delegate?.speciesDetailsFetched(speciesDetails: speciesDetailsResponse.results)
             }
