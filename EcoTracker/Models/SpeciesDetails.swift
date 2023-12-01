@@ -8,24 +8,24 @@
 import UIKit
 
 // MARK: - SpeciesDetailsResponse
-struct SpeciesDetailsResponse: Codable {
+struct SpeciesDetailsResponse: Decodable {
     let results: [SpecieDetails]
 }
  
 // MARK: - SpecieDetails
-struct SpecieDetails: Codable {
+struct SpecieDetails: Decodable {
     let taxon: SpecieAttributes
 }
  
 // MARK: - SpecieAttributes
-struct SpecieAttributes: Codable {
+struct SpecieAttributes: Decodable {
     let name: String
     let defaultPhoto: DefaultPhoto
     let wikipediaUrl: String?
 }
  
 // MARK: - DefaultPhoto
-struct DefaultPhoto: Codable {
+struct DefaultPhoto: Decodable {
     let attribution: String
     let url: String
 }
