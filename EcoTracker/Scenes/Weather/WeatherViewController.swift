@@ -16,7 +16,7 @@ final class WeatherViewController: UIViewController {
     private let degreeLabel = UILabel()
     private let placeNameLabel = UILabel()
     private let weatherDescription = UILabel()
-    private let weahtherTypeLabel = UILabel()
+    private let weatherTypeLabel = UILabel()
     private let typeCityTextField = CustomTextField()
     private let enterCoordinatesLabel = UILabel()
     private let getInformationStackView = UIStackView()
@@ -56,7 +56,7 @@ final class WeatherViewController: UIViewController {
         getInformationStackView.addArrangedSubview(coordinatesStackView)
         coordinatesStackView.axis = .horizontal
         coordinatesStackView.distribution = .fillEqually
-        coordinatesStackView.spacing = 11
+        coordinatesStackView.spacing = 12
         
         setupLatitudeTextField()
         setupLongitudeTextField()

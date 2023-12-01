@@ -8,7 +8,7 @@
 import UIKit
 
 final class CustomTextField: UITextField {
-    private let padding = UIEdgeInsets(top: 17, left: 16, bottom: 17, right: 16)
+    private let padding = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
