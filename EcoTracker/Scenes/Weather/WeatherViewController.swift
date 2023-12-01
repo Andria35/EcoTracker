@@ -63,7 +63,7 @@ final class WeatherViewController: UIViewController {
         getInformationStackView.addArrangedSubview(coordinatesStackView)
         coordinatesStackView.axis = .horizontal
         coordinatesStackView.distribution = .fillEqually
-        coordinatesStackView.spacing = 11
+        coordinatesStackView.spacing = 12
         
         setupLatitudeTextField()
         setupLongitudeTextField()
@@ -141,11 +141,7 @@ final class WeatherViewController: UIViewController {
             let long = self?.longitudeTextField.text
             let lat = self?.latitudeTextField.text
             
-            if cityName == "" && (long == "" || lat == "") {
-               print ("Please enter correct info")
-            } else {
-                self?.weatherViewModel.fetchData(long: long ?? "", lat: lat ?? "", cityName: cityName ?? "")
-            }
+            self?.weatherViewModel.fetchData(long: long ?? "", lat: lat ?? "", cityName: cityName ?? "")
         }), for: .touchUpInside)
     }
     

@@ -21,16 +21,20 @@ class WeatherViewModel {
     var delegate: DataFetchDelegate? = nil
     
     func fetchData(long: String, lat: String, cityName: String) {
-        Task {
-            do {
-                let urlString = buildURL(long: long, lat: lat, cityName: cityName)
-                
-                if let weatherFetchModel: WeatherDataModel = try await NetworkManager.shared.fetchData(fromURL: urlString) {
-                    weatherInfo = weatherFetchModel
-                    await delegate?.fetchCompleted()
+        if cityName == "" && (long == "" || lat == "") {
+            print("Please enter correct info")
+        } else {
+            Task {
+                do {
+                    let urlString = buildURL(long: long, lat: lat, cityName: cityName)
+                    
+                    if let weatherFetchModel: WeatherDataModel = try await NetworkManager.shared.fetchData(fromURL: urlString) {
+                        weatherInfo = weatherFetchModel
+                        await delegate?.fetchCompleted()
+                    }
+                } catch {
+                    await delegate?.fetchFailed(error: error)
                 }
-            } catch {
-                await delegate?.fetchFailed(error: error)
             }
         }
     }
