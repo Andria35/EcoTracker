@@ -12,15 +12,17 @@ final class PopulationViewController: UIViewController {
     private var countries: [String] = []
     private let viewModel = PopulationViewModel()
     private var populationData = PopulationData(totalPopulation: [])
-    var selectedCountry: String?
+    private var selectedCountry: String?
     
     //MARK: - UI Elements
     
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.distribution = .fill
+        stackView.spacing = 24
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         return stackView
     }()
     
@@ -37,7 +39,8 @@ final class PopulationViewController: UIViewController {
         textField.textAlignment = .center
         textField.layer.borderWidth = 1.0
         textField.layer.borderColor = UIColor.textfieldStrokeColor.cgColor
-        textField.layer.cornerRadius = 5.0
+        textField.layer.cornerRadius = 6.0
+        textField.backgroundColor = UIColor.textfieldBackgroundColor
         textField.inputView = UIPickerView()
         let placeholderAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.gray
@@ -57,7 +60,7 @@ final class PopulationViewController: UIViewController {
         button.backgroundColor = .buttonBackgroundColor
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.masksToBounds = true
-        button.layer.cornerRadius = 5
+        button.layer.cornerRadius = 6
         return button
     }()
     
@@ -92,14 +95,10 @@ final class PopulationViewController: UIViewController {
         NSLayoutConstraint.activate([
             mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            mainStackView.heightAnchor.constraint(equalToConstant: 202),
-            mainStackView.widthAnchor.constraint(equalToConstant: 343),
-            populationButton.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: -12),
-            populationButton.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 12),
+            mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             populationButton.heightAnchor.constraint(equalToConstant: 48),
-            selectedCountryTextField.heightAnchor.constraint(equalToConstant: 48),
-            selectedCountryTextField.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: -12),
-            selectedCountryTextField.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 12)
+            selectedCountryTextField.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
     
@@ -129,17 +128,7 @@ final class PopulationViewController: UIViewController {
     }
     
     private func buttonTapped() {
-        Task {
-            do {
-                let populationData = try await viewModel.getCountriesPopulation(for: selectedCountry ?? "Georgia")
-                let pushedVC = PopulationDetailsViewController()
-                pushedVC.detailsViewModel.populationData = populationData
-                pushedVC.country = selectedCountryTextField.text
-                navigationController?.pushViewController(pushedVC, animated: true)
-            } catch {
-                print("Error fetching population data: \(error)")
-            }
-        }
+        viewModel.didTapPopulationButton(country: selectedCountryTextField.text ?? "Georgia")
     }
     
     
@@ -188,6 +177,19 @@ extension PopulationViewController: UIPickerViewDataSource {
 //MARK: - Extension: PopulationViewModelDelegate
 
 extension PopulationViewController: PopulationViewModelDelegate {
+    
+    func didTapPopulationButton(_ population: PopulationData) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            let pushedVC = PopulationDetailsViewController()
+            pushedVC.detailsViewModel.populationData = population
+            pushedVC.country = self.selectedCountryTextField.text
+            pushedVC.configure(population: population)
+            self.navigationController?.pushViewController(pushedVC, animated: true)
+        }
+    }
+
+    
     
     func didFetchPopulation(_ population: PopulationData) {
         self.populationData = population

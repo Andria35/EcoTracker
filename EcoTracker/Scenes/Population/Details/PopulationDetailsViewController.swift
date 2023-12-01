@@ -10,7 +10,7 @@ import UIKit
 final class PopulationDetailsViewController: UIViewController {
     
     var country: String?
-    var detailsViewModel = PopulationDetailsViewModel()
+    let detailsViewModel = PopulationDetailsViewModel()
     
     //MARK: - UI Elements
     
@@ -120,6 +120,10 @@ final class PopulationDetailsViewController: UIViewController {
             mainStackView.heightAnchor.constraint(equalToConstant: 202),
             mainStackView.widthAnchor.constraint(equalToConstant: 343),
         ])
+    }
+    
+     func configure(population: PopulationData) {
+        detailsViewModel.populationData = population
     }
     
 }

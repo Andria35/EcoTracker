@@ -11,6 +11,7 @@ import NetworkManager
 protocol PopulationViewModelDelegate: AnyObject {
     func didFetchCountries(_ countries: CountryResponse)
     func didFetchPopulation(_ population: PopulationData)
+    func didTapPopulationButton(_ population: PopulationData)
 }
 
 final class PopulationViewModel {
@@ -46,6 +47,18 @@ final class PopulationViewModel {
         }
         
     }
+    
+    func didTapPopulationButton(country: String) {
+            Task {
+                do {
+                    let populationData: PopulationData = try await getCountriesPopulation(for: country)
+                    delegate?.didTapPopulationButton(populationData)
+                } catch {
+                    print("Error fetching population data: \(error)")
+                }
+            }
+        }
+    
     
     func getCountriesPopulation(for country: String) async throws -> PopulationData {
         
