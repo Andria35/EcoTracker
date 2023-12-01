@@ -32,4 +32,32 @@ final class AirQualityViewModel {
             }
         }
     }
+    
+    //    private func setupCheckAirQualityButton() {
+    //        checkAirQualityButton.addAction(UIAction(title: "Check Air Quality", handler: { [weak self] action in
+    //            Task {
+    //                guard let cityName = self?.locationTextField.text, !cityName.isEmpty else {
+    //                    print("Please, Provide Information")
+    //                    return
+    //                }
+    //                await self?.viewModel.fetchCity(for: cityName)
+    //            }
+    //        }), for: .touchUpInside)
+    //    }
+    //}
+    //
+    //    func checkAndFetchCity(for cityName: String) async {
+    //        guard !cityName.isEmpty else {
+    //            delegate?.showError
+    //            return
+    //        }
+    //
+    //        await fetchCity(for: cityName)
+    //    }
+    //}
+    
+    /*
+     ლინკს მოაქვს ინფორმაცია მხოლოდ კალიფორნიის შტატის ქალაქებზე:
+     Los Angeles, San Francisco, San Jose, San Jose, Anaheim,, Riverside...
+     */
 }

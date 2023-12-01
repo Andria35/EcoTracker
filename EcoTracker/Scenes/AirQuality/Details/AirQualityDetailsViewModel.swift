@@ -15,7 +15,7 @@ protocol AirQualityDetailsViewModelDelegate: AnyObject {
 
 final class AirQualityDetailsViewModel {
     weak var delegate: AirQualityDetailsViewModelDelegate?
-
+    
     func fetchAirQualityData(for cityName: String) {
         Task {
             do {
@@ -29,4 +29,29 @@ final class AirQualityDetailsViewModel {
             }
         }
     }
-}
+    
+    func airQualityDescription(forAQI aqius: Int) -> String {
+        let description: String
+            switch aqius {
+            case 0...50:
+                description = "Air quality is great, no significant health risk. Enjoy outdoor activities!"
+            case 51...100:
+                description = "Air quality is acceptable; however, there may be some concern for very sensitive individuals. Unusually sensitive people should consider limiting prolonged outdoor exertion."
+            case 101...150:
+                description = "Members of sensitive groups may experience health effects. The general public is less likely to be affected."
+            case 151...200:
+                description = "Everyone may begin to experience adverse health effects, and members of sensitive groups may experience more serious effects. Avoid prolonged outdoor exertion; everyone else, especially children, should limit outdoor exertion."
+            case 201...250:
+                description = "Health alert: everyone may experience more serious health effects. Everyone should avoid outdoor activities, and members of sensitive groups should avoid all outdoor exertion."
+            case 251...300:
+                description = "Health warnings of emergency conditions. The entire population is likely to be affected. Avoid all outdoor activities, and remain indoors as much as possible."
+            case 301...500:
+                description = "Health alert: everyone may experience more serious health effects. The health warnings of emergency conditions; the entire population is more likely to be affected."
+            default:
+                description = "Air quality information not available."
+            }
+        
+        return description
+        }
+    }
+

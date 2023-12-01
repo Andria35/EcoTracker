@@ -491,12 +491,12 @@ final class AirQualityViewController: UIViewController {
     private func setupCheckAirQualityButton() {
         checkAirQualityButton.addAction(UIAction(title: "Check Air Quality", handler: { [weak self] action in
             Task {
-                    guard let cityName = self?.locationTextField.text, !cityName.isEmpty else {
-                        print("Please, Provide Information")
-                        return
-                    }
-                    await self?.viewModel.fetchCity(for: cityName)
+                guard let cityName = self?.locationTextField.text, !cityName.isEmpty else {
+                    print("Please, Provide Information")
+                    return
                 }
+                await self?.viewModel.fetchCity(for: cityName)
+            }
         }), for: .touchUpInside)
     }
 }
@@ -508,7 +508,7 @@ extension AirQualityViewController: AirQualityViewModelDelegate {
     }
     
     func showError(_ error: Error) {
-        print("Sorry, only Los Angeles is available 🌝")
+        print("Please note that only cities in California are available 🌝")
     }
     
     func navigateToDetailsPage(with city: String) {
@@ -516,5 +516,5 @@ extension AirQualityViewController: AirQualityViewModelDelegate {
         navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }
-                                                 
-                                                 
+
+
