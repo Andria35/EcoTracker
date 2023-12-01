@@ -24,6 +24,8 @@ final class WeatherViewController: UIViewController {
     private let coordinatesStackView = UIStackView()
     private let imagestackView = UIStackView()
     private let weatherImage = UIImageView()
+
+    private let defaultImageName = "sunny-cloudy"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +36,7 @@ final class WeatherViewController: UIViewController {
         setupDegreeLabel()
         setupPlaceNameLabel()
         setupGetInformationStackView()
-        seupImageStackView()
+        setupImageStackView()
         setupWeatherImage()
         setupConstrains()
     }
@@ -69,7 +71,7 @@ final class WeatherViewController: UIViewController {
         setupLongitudeTextField()
     }
     
-    func seupImageStackView() {
+    func setupImageStackView() {
         view.addSubview(imagestackView)
         imagestackView.translatesAutoresizingMaskIntoConstraints = false
         imagestackView.alignment = .center
@@ -78,7 +80,7 @@ final class WeatherViewController: UIViewController {
     // MARK: - Setup image
     func setupWeatherImage() {
         imagestackView.addArrangedSubview(weatherImage)
-        weatherImage.image = UIImage(named: "sunny-cloudy")
+        weatherImage.image = UIImage(named: defaultImageName)
     }
    
     // MARK: - Labels setups
