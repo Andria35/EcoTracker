@@ -13,7 +13,6 @@ final class AirQualityDetailsViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [cityTitleLabel, airQualityIndex, airQualityIndexDescription])
         stackView.axis = .vertical
         stackView.spacing = 24
-        stackView.layer.cornerRadius = 12
         stackView.backgroundColor = UIColor.accentColor
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.isLayoutMarginsRelativeArrangement = true
@@ -52,11 +51,11 @@ final class AirQualityDetailsViewController: UIViewController {
     private var viewModel: AirQualityDetailsViewModel?
     
     init(city: String) {
-            super.init(nibName: nil, bundle: nil)
-            viewModel = AirQualityDetailsViewModel()
-            viewModel?.delegate = self
-            viewModel?.fetchAirQualityData(for: city)
-        }
+        super.init(nibName: nil, bundle: nil)
+        viewModel = AirQualityDetailsViewModel()
+        viewModel?.delegate = self
+        viewModel?.fetchAirQualityData(for: city)
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -79,7 +78,7 @@ final class AirQualityDetailsViewController: UIViewController {
     private func addMainSubview() {
         view.addSubview(mainStackView)
     }
-
+    
     private func setupMainViewConstraints() {
         NSLayoutConstraint.activate([
             mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -98,7 +97,7 @@ extension AirQualityDetailsViewController: AirQualityDetailsViewModelDelegate {
                 self.airQualityIndex.text = "\(airQualityData.data.current.pollution.aqius)"
                 
                 let aqius = airQualityData.data.current.pollution.aqius
-                let airQualityDescription = viewModel?.airQualityDescription(forAQI: aqius) ?? "Air quality information not available."
+                let airQualityDescription = viewModel?.getAirQualityDescription(forAQI: aqius)
                 self.airQualityIndexDescription.text = airQualityDescription
             }
         }
