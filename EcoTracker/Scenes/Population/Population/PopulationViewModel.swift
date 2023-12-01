@@ -27,17 +27,16 @@ final class PopulationViewModel {
     //MARK: - viewDidLoad
     
     func viewDidLoad() async throws {
-            do {
-                countries = try await getCountries(url: countriesURL)
-            } catch {
-                print("Error: \(error)")
-            }
+        do {
+            countries = try await getCountries(url: countriesURL)
+        } catch {
+            print("Error: \(error)")
         }
+    }
     
     //MARK: - Methods
     
     private func getCountries(url: String) async throws -> CountryResponse  {
-        
         do {
             let countries: CountryResponse = try await NetworkManager.shared.fetchData(fromURL: url)
             delegate?.didFetchCountries(countries)
@@ -48,7 +47,7 @@ final class PopulationViewModel {
         
     }
     
-     func getCountriesPopulation(for country: String) async throws -> PopulationData {
+    func getCountriesPopulation(for country: String) async throws -> PopulationData {
         
         let url = "https://d6wn6bmjj722w.population.io/1.0/population/\(selectedCountry)/today-and-tomorrow/?format=json"
         

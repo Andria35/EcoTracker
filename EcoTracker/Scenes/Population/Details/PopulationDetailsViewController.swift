@@ -9,9 +9,9 @@ import UIKit
 
 final class PopulationDetailsViewController: UIViewController {
     
-    var populationData: PopulationData?
     var country: String?
-
+    var detailsViewModel = PopulationDetailsViewModel()
+    
     //MARK: - UI Elements
     
     private let mainStackView: UIStackView = {
@@ -59,7 +59,7 @@ final class PopulationDetailsViewController: UIViewController {
         label.textColor = .textColor
         return label
     }()
-        
+    
     private let dateLabelFuture: UILabel = {
         let label = UILabel()
         label.textColor = .textColor
@@ -75,20 +75,26 @@ final class PopulationDetailsViewController: UIViewController {
     private let statusLabel: UILabel = {
         let label = UILabel()
         label.textColor = .textColor
+        label.textAlignment = .center
         return label
     }()
-
-
+    
+    //MARK: - LifeCycles
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
         setup()
     }
     
+    //MARK: Setup UI
+    
     private func setup() {
         setupUI()
         setupConstraints()
-        setupLabels()
+        setupCountryLabel()
+        detailsViewModel.delegate = self
+        detailsViewModel.viewDidLoad()
     }
     
     private func setupUI() {
@@ -100,23 +106,13 @@ final class PopulationDetailsViewController: UIViewController {
         mainStackView.addArrangedSubview(tomorrowStackView)
         tomorrowStackView.addArrangedSubview(dateLabelFuture)
         tomorrowStackView.addArrangedSubview(populationLabelFuture)
+        mainStackView.addArrangedSubview(statusLabel)
     }
     
-    private func setupLabels() {
-        if let country = country {
-            countryLabel.text = country
-        }
-        if let firstPopulation = populationData?.totalPopulation.first {
-            dateLabel.text = "Today: \(String(firstPopulation.date))".replacingOccurrences(of: "-", with: ".")
-            populationLabel.text = String(firstPopulation.population)
-        }
-        if let secondPopulation = populationData?.totalPopulation.last {
-            dateLabelFuture.text = "Tomorrow: \(String(secondPopulation.date))".replacingOccurrences(of: "-", with: ".")
-            populationLabelFuture.text = String(secondPopulation.population)
-        }
-        
+    private func setupCountryLabel() {
+        countryLabel.text = country
     }
-
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -125,5 +121,25 @@ final class PopulationDetailsViewController: UIViewController {
             mainStackView.widthAnchor.constraint(equalToConstant: 343),
         ])
     }
+    
+}
 
+//MARK: - Extension - PopulationDetailsViewModelDelegate
+
+extension PopulationDetailsViewController: PopulationDetailsViewModelDelegate {
+    func viewModelDidUpdateTodayDetails(_ date: String, population: String) {
+        dateLabel.text = date
+        populationLabel.text = population
+    }
+    
+    func viewModelDidUpdateTomorrowDetails(_ date: String, population: String) {
+        dateLabelFuture.text = date
+        populationLabelFuture.text = population
+    }
+    
+    func viewModelDidUpdateStatus() {
+        statusLabel.text = detailsViewModel.status
+    }
+    
+    
 }

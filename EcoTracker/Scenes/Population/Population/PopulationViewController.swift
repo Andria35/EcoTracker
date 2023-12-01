@@ -133,7 +133,7 @@ final class PopulationViewController: UIViewController {
             do {
                 let populationData = try await viewModel.getCountriesPopulation(for: selectedCountry ?? "Georgia")
                 let pushedVC = PopulationDetailsViewController()
-                pushedVC.populationData = populationData
+                pushedVC.detailsViewModel.populationData = populationData
                 pushedVC.country = selectedCountryTextField.text
                 navigationController?.pushViewController(pushedVC, animated: true)
             } catch {

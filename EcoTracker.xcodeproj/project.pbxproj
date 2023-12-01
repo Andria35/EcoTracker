@@ -20,7 +20,7 @@
 		104EB1802B174595006591A3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17F2B174595006591A3 /* UIColor.swift */; };
 		104EB1832B174FF6006591A3 /* NetworkManager in Frameworks */ = {isa = PBXBuildFile; productRef = 104EB1822B174FF6006591A3 /* NetworkManager */; };
 		D5F6D2482B17D02400CE8932 /* PopulationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F6D2472B17D02400CE8932 /* PopulationViewModel.swift */; };
-		D5F6D24A2B17D03500CE8932 /* CountriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F6D2492B17D03500CE8932 /* CountriesModel.swift */; };
+		D5F6D24A2B17D03500CE8932 /* PopulationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F6D2492B17D03500CE8932 /* PopulationModels.swift */; };
 		D5F6D24D2B17E6D500CE8932 /* PopulationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F6D24C2B17E6D500CE8932 /* PopulationDetailsViewController.swift */; };
 		D5F6D2512B191E5F00CE8932 /* PopulationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F6D2502B191E5F00CE8932 /* PopulationDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -40,7 +40,7 @@
 		104EB17D2B173F21006591A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		104EB17F2B174595006591A3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D5F6D2472B17D02400CE8932 /* PopulationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationViewModel.swift; sourceTree = "<group>"; };
-		D5F6D2492B17D03500CE8932 /* CountriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountriesModel.swift; path = EcoTracker/Scenes/Population/CountriesModel.swift; sourceTree = SOURCE_ROOT; };
+		D5F6D2492B17D03500CE8932 /* PopulationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PopulationModels.swift; path = EcoTracker/Scenes/Population/PopulationModels.swift; sourceTree = SOURCE_ROOT; };
 		D5F6D24C2B17E6D500CE8932 /* PopulationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationDetailsViewController.swift; sourceTree = "<group>"; };
 		D5F6D2502B191E5F00CE8932 /* PopulationDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationDetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,7 +119,7 @@
 		104EB16C2B173A44006591A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D5F6D2492B17D03500CE8932 /* CountriesModel.swift */,
+				D5F6D2492B17D03500CE8932 /* PopulationModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -276,7 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5F6D24A2B17D03500CE8932 /* CountriesModel.swift in Sources */,
+				D5F6D24A2B17D03500CE8932 /* PopulationModels.swift in Sources */,
 				104EB17A2B173D3E006591A3 /* SolarResourcesViewController.swift in Sources */,
 				104EB1762B173C59006591A3 /* WeatherViewController.swift in Sources */,
 				104EB17E2B173F21006591A3 /* TabBarController.swift in Sources */,
