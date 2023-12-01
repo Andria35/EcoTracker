@@ -37,11 +37,23 @@ final class TabBarController: UITabBarController {
     
     // MARK: - SetupUI
     private func setupUI() {
-        tabBar.backgroundColor = UIColor.accentColor
         tabBar.tintColor = UIColor.componentsColor
         tabBar.unselectedItemTintColor = .white.withAlphaComponent(0.5)
-        UINavigationBar.appearance().titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.textColor
-        ]
+        tabBar.standardAppearance = createTabBarAppearance()
+        tabBar.scrollEdgeAppearance = createTabBarScrollEdgeAppearance()
+    }
+    
+    private func createTabBarAppearance() -> UITabBarAppearance {
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.backgroundColor = UIColor.accentColor
+        return tabBarAppearance
+    }
+
+    private func createTabBarScrollEdgeAppearance() -> UITabBarAppearance {
+        let tabBarScrollEdgeAppearance = UITabBarAppearance()
+        tabBarScrollEdgeAppearance.backgroundColor = UIColor.accentColor
+        return tabBarScrollEdgeAppearance
     }
 }
+
+
