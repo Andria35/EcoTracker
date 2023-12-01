@@ -9,6 +9,7 @@ import UIKit
 
 protocol SpeciesDetailsTableViewCellViewModelDelegate: AnyObject {
     func imageFetched(image: UIImage)
+    func authorParsed(parsedAuthorString: String)
 }
 
 final class SpeciesDetailsTableViewCell: UITableViewCell {
@@ -56,7 +57,7 @@ final class SpeciesDetailsTableViewCell: UITableViewCell {
     
     private let authorLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Helvetica", size: 16)
+        label.font = UIFont(name: "Helvetica", size: 14)
         label.text = "Author..."
         label.textColor = .textColor
         label.numberOfLines = 0
@@ -65,10 +66,11 @@ final class SpeciesDetailsTableViewCell: UITableViewCell {
     
     private let linkLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Helvetica", size: 16)
+        label.font = UIFont(name: "Helvetica", size: 12)
         label.text = "Link..."
         label.textColor = .textColor
-        label.numberOfLines = 0
+        label.numberOfLines = 1
+        
         return label
     }()
 
@@ -79,6 +81,7 @@ final class SpeciesDetailsTableViewCell: UITableViewCell {
         selectionStyle = .none
         setupUI()
         setupConstraints()
+        setupDelegates()
     }
     
     required init?(coder: NSCoder) {
@@ -88,15 +91,16 @@ final class SpeciesDetailsTableViewCell: UITableViewCell {
     // MARK: - PrepareForReuse
     override func prepareForReuse() {
         super.prepareForReuse()
-//        nameLabel.text = nil
-//        authorLabel.text = nil
-//        linkLabel.text = nil
+        nameLabel.text = nil
+        authorLabel.text = nil
+        linkLabel.text = nil
     }
     
     // MARK: - Setup UI
     private func setupUI() {
         setupBackground()
         setupSubviews()
+        setupLinkLabel()
     }
     
     private func setupBackground() {
@@ -114,6 +118,11 @@ final class SpeciesDetailsTableViewCell: UITableViewCell {
         mainStackView.addArrangedSubview(textStackView)
     }
     
+    private func setupLinkLabel() {
+        linkLabel.attributedText = NSAttributedString(string: linkLabel.text ?? "", attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
+    }
+
+    
     // MARK: - Setup Constraints
     private func setupConstraints() {
         setupMainHStackConstraints()
@@ -123,8 +132,8 @@ final class SpeciesDetailsTableViewCell: UITableViewCell {
     private func setupMainHStackConstraints() {
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
-            mainStackView.leftAnchor.constraint(equalTo: self.leftAnchor),
-            mainStackView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            mainStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            mainStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             mainStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5),
         ])
     }
@@ -141,12 +150,10 @@ final class SpeciesDetailsTableViewCell: UITableViewCell {
     
     // MARK: - Class Methods
     func configure(with specieDetails: SpecieDetails) {
-//        nameLabel.text = specieDetails.taxon.name
-        print(specieDetails.taxon)
-//        Task {
-//            await viewModel.fetchImage(urlString: s)
-//        }
-        //        authorLabel.text = specieDetails.
+        nameLabel.text = specieDetails.taxon.name
+        let authorString = specieDetails.taxon.defaultPhoto.attribution
+        linkLabel.text = specieDetails.taxon.wikipediaUrl
+        viewModel.viewDidLoad(urlString: specieDetails.taxon.defaultPhoto.url, authorString: authorString)
     }
 }
 
@@ -154,5 +161,9 @@ final class SpeciesDetailsTableViewCell: UITableViewCell {
 extension SpeciesDetailsTableViewCell: SpeciesDetailsTableViewCellViewModelDelegate {
     func imageFetched(image: UIImage) {
         mainImageView.image = image
+    }
+    
+    func authorParsed(parsedAuthorString: String) {
+        authorLabel.text = parsedAuthorString
     }
 }

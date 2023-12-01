@@ -5,7 +5,7 @@
 //  Created by Andria Inasaridze on 30.11.23.
 //
 
-import Foundation
+import UIKit
 
 // MARK: - SpeciesDetailsResponse
 struct SpeciesDetailsResponse: Codable {
@@ -22,12 +22,11 @@ struct SpecieAttributes: Codable {
     let name: String
     let defaultPhoto: DefaultPhoto
     let wikipediaUrl: String?
+    
 }
  
 // MARK: - DefaultPhoto
 struct DefaultPhoto: Codable {
     let attribution: String
     let url: String
-    let squareUrl: String
-    let mediumUrl: String
 }

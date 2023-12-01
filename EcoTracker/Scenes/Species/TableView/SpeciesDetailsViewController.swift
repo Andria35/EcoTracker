@@ -112,6 +112,5 @@ extension SpeciesDetailsViewController: SpeciesDetailsViewModelDelegate {
     func showError(_ error: Error) {
         print(error)
     }
-    
-    
 }
+
