@@ -8,6 +8,7 @@
 import UIKit
 
 final class SpeciesDetailsViewController: UIViewController {
+    
     // MARK: - Class Properties
     private var speciesDetails = [SpecieDetails]()
     private let viewModel: SpeciesDetailsViewModel
@@ -23,7 +24,6 @@ final class SpeciesDetailsViewController: UIViewController {
     // MARK: - ViewLifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
         setupConstraints()
         setupDelegates()
@@ -38,7 +38,6 @@ final class SpeciesDetailsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    
     // MARK: - Setup UI
     private func setupUI() {
         setupBackground()
@@ -78,7 +77,6 @@ final class SpeciesDetailsViewController: UIViewController {
         viewModel.delegate = self
     }
     
-    // MARK: - Class Methods
 }
 
 // MARK: - TableView DataSource

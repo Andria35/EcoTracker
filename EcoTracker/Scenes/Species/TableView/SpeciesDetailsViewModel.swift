@@ -20,17 +20,19 @@ final class SpeciesDetailsViewModel {
     var SpeciesDetails: [SpecieDetails] = []
     weak var delegate: SpeciesDetailsViewModelDelegate?
     
+    // MARK: LifeCycles
     init(cityIds: [Int]) {
         self.cityIds = cityIds
     }
     
     func viewDidLoad() {
-        guard let id = cityIds.randomElement() else { return }
+        guard let id = cityIds.first else { return }
         Task{
             await fetchSpeciesDetails(cityId: id)
         }
     }
     
+    // MARK: - Class Methods
     private func fetchSpeciesDetails(cityId: Int) async {
         let urlString = "https://api.inaturalist.org/v1/observations/species_counts?place_id=\(cityId)"
         do {

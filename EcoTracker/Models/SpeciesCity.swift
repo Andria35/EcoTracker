@@ -7,12 +7,12 @@
 
 import Foundation
 
-// MARK: - CityResponce
+// MARK: - SpeciesCityResponse
 struct SpeciesCityResponse: Decodable {
     let results: [SpeciesCity]
 }
 
-// MARK: - Result
+// MARK: - SpeciesCity
 struct SpeciesCity: Decodable {
     let id: Int
 }

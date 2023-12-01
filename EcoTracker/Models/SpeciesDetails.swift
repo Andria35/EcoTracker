@@ -22,7 +22,6 @@ struct SpecieAttributes: Codable {
     let name: String
     let defaultPhoto: DefaultPhoto
     let wikipediaUrl: String?
-    
 }
  
 // MARK: - DefaultPhoto

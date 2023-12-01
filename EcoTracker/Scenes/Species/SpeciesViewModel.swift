@@ -20,13 +20,14 @@ final class SpeciesViewModel {
     weak var delegate: SpeciesViewModelDelegate?
     private var cityIds: [SpeciesCity] = []
     
-    
     //MARK: - Class Methods
-    func viewDidLoad() {
-        
+    func findSpeciesButtonPressed(cityName: String?) {
+        Task {
+            await fetchCityId(by: cityName ?? "")
+        }
     }
     
-    func fetchCityId(by cityName: String) async {
+    private func fetchCityId(by cityName: String) async {
         let urlString = "https://api.inaturalist.org/v1/places/autocomplete?q=\(cityName)"
         do {
             let speciesCityResponse: SpeciesCityResponse = try await NetworkManager.shared.fetchData(fromURL: urlString)
@@ -54,5 +55,4 @@ final class SpeciesViewModel {
         }
         return cityIdArray
     }
-
 }

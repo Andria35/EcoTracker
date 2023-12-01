@@ -71,6 +71,7 @@ final class SpeciesViewController: UIViewController {
         setupActions()
         setupDelegates()
     }
+    
     // MARK: - Setup UI
     private func setupUI() {
         setupBackground()
@@ -96,9 +97,7 @@ final class SpeciesViewController: UIViewController {
     
     private func setupFindSpeciesAction() {
         findSpeciesButton.addAction(UIAction(handler: { [weak self] action in
-            Task {
-                await self?.viewModel.fetchCityId(by: self?.cityTextField.text ?? "")
-            }
+            self?.viewModel.findSpeciesButtonPressed(cityName: self?.cityTextField.text)
         }), for: .touchUpInside)
     }
     
@@ -140,6 +139,7 @@ final class SpeciesViewController: UIViewController {
     private func setupDelegates() {
         viewModel.delegate = self
     }
+    
     // MARK: - Class Methods
     private func displayAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -163,6 +163,4 @@ extension SpeciesViewController: SpeciesViewModelDelegate {
     func showError(_ error: Error) {
         print(error)
     }
-    
-    
 }

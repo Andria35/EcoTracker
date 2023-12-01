@@ -12,11 +12,13 @@ final class SpeciesDetailsTableViewCellViewModel {
     
     // MARK: - Class Attributes
     weak var delegate: SpeciesDetailsTableViewCellViewModelDelegate?
+    
     // MARK: - Class Methods
     func viewDidLoad(urlString: String, authorString: String) {
         Task {
             await fetchImage(urlString: urlString)
         }
+        
         let parsedAuthorString = parseAuthor(author: authorString)
         delegate?.authorParsed(parsedAuthorString: parsedAuthorString)
     }

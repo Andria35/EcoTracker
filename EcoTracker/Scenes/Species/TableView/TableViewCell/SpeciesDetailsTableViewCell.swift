@@ -33,7 +33,7 @@ final class SpeciesDetailsTableViewCell: UITableViewCell {
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.alignment = .leading
-        stackView.spacing = 1
+        stackView.spacing = 2
         return stackView
     }()
     
@@ -41,8 +41,7 @@ final class SpeciesDetailsTableViewCell: UITableViewCell {
         let image = UIImageView()
         image.layer.cornerRadius = 10
         image.clipsToBounds = true
-        image.image = UIImage(systemName: "cat.fill")
-        image.backgroundColor = .red
+        image.image = UIImage(systemName: "photo.artframe")
         return image
     }()
     
@@ -59,7 +58,7 @@ final class SpeciesDetailsTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont(name: "Helvetica", size: 14)
         label.text = "Author..."
-        label.textColor = .textColor
+        label.textColor = .textColor.withAlphaComponent(0.7)
         label.numberOfLines = 0
         return label
     }()
@@ -68,16 +67,14 @@ final class SpeciesDetailsTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont(name: "Helvetica", size: 12)
         label.text = "Link..."
-        label.textColor = .textColor
+        label.textColor = .textColor.withAlphaComponent(0.5)
         label.numberOfLines = 1
-        
         return label
     }()
 
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         selectionStyle = .none
         setupUI()
         setupConstraints()
@@ -110,11 +107,9 @@ final class SpeciesDetailsTableViewCell: UITableViewCell {
     private func setupSubviews() {
         addSubview(mainStackView)
         mainStackView.addArrangedSubview(mainImageView)
-        
         textStackView.addArrangedSubview(nameLabel)
         textStackView.addArrangedSubview(authorLabel)
         textStackView.addArrangedSubview(linkLabel)
-        
         mainStackView.addArrangedSubview(textStackView)
     }
     
@@ -122,7 +117,6 @@ final class SpeciesDetailsTableViewCell: UITableViewCell {
         linkLabel.attributedText = NSAttributedString(string: linkLabel.text ?? "", attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
     }
 
-    
     // MARK: - Setup Constraints
     private func setupConstraints() {
         setupMainHStackConstraints()
@@ -159,6 +153,7 @@ final class SpeciesDetailsTableViewCell: UITableViewCell {
 
 // MARK: - SpeciesDetailsTableViewCellViewModelDelegate
 extension SpeciesDetailsTableViewCell: SpeciesDetailsTableViewCellViewModelDelegate {
+    
     func imageFetched(image: UIImage) {
         mainImageView.image = image
     }
