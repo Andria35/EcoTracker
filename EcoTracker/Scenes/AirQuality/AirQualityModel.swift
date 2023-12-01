@@ -7,25 +7,24 @@
 import Foundation
 
 // MARK: - AirQualityModel
-struct AirQualityModel: Codable {
+struct AirQualityModel: Decodable {
     let status: String
     let data: DataClass
 }
 
 // MARK: - DataClass
-struct DataClass: Codable {
+struct DataClass: Decodable {
     let city: String
     let current: Current
 }
 
 // MARK: - Current
-struct Current: Codable {
+struct Current: Decodable {
     let pollution: Pollution
-    let weather: Weather
 }
 
 // MARK: - Pollution
-struct Pollution: Codable {
+struct Pollution: Decodable {
     let ts: String
     let aqius: Int
     let mainus: String
@@ -33,14 +32,6 @@ struct Pollution: Codable {
     let maincn: String
 }
 
-// MARK: - Weather
-struct Weather: Codable {
-    let ts: String
-    let tp, pr, hu: Int
-    let ws: Double
-    let wd: Int
-    let ic: String
-}
 
 
 

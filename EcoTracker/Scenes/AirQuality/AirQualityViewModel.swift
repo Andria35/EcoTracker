@@ -16,8 +16,6 @@ protocol AirQualityViewModelDelegate: AnyObject {
 
 final class AirQualityViewModel {
     
-    var city: DataClass?
-    
     weak var delegate: AirQualityViewModelDelegate?
     
     func fetchCity(for cityName: String) async {

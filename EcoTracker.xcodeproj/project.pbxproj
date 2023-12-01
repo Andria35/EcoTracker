@@ -19,6 +19,7 @@
 		104EB17E2B173F21006591A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17D2B173F21006591A3 /* TabBarController.swift */; };
 		104EB1802B174595006591A3 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104EB17F2B174595006591A3 /* UIColor.swift */; };
 		104EB1832B174FF6006591A3 /* NetworkManager in Frameworks */ = {isa = PBXBuildFile; productRef = 104EB1822B174FF6006591A3 /* NetworkManager */; };
+		EEAC2B1A2B19701600D74385 /* AirQualityDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAC2B192B19701600D74385 /* AirQualityDetailsViewModel.swift */; };
 		EEB7EE172B1912BF00EEF557 /* AirQualityDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB7EE162B1912BF00EEF557 /* AirQualityDetailsViewController.swift */; };
 		EEB7EE192B1912F400EEF557 /* AirQualityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB7EE182B1912F400EEF557 /* AirQualityModel.swift */; };
 		EEB7EE1B2B19130900EEF557 /* AirQualityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB7EE1A2B19130900EEF557 /* AirQualityViewModel.swift */; };
@@ -38,6 +39,7 @@
 		104EB17B2B173D5C006591A3 /* PopulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationViewController.swift; sourceTree = "<group>"; };
 		104EB17D2B173F21006591A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		104EB17F2B174595006591A3 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		EEAC2B192B19701600D74385 /* AirQualityDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityDetailsViewModel.swift; sourceTree = "<group>"; };
 		EEB7EE162B1912BF00EEF557 /* AirQualityDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityDetailsViewController.swift; sourceTree = "<group>"; };
 		EEB7EE182B1912F400EEF557 /* AirQualityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AirQualityModel.swift; path = EcoTracker/Scenes/AirQuality/AirQualityModel.swift; sourceTree = SOURCE_ROOT; };
 		EEB7EE1A2B19130900EEF557 /* AirQualityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityViewModel.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				EEB7EE162B1912BF00EEF557 /* AirQualityDetailsViewController.swift */,
+				EEAC2B192B19701600D74385 /* AirQualityDetailsViewModel.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				104EB1762B173C59006591A3 /* WeatherViewController.swift in Sources */,
 				104EB17E2B173F21006591A3 /* TabBarController.swift in Sources */,
 				104EB17C2B173D5C006591A3 /* PopulationViewController.swift in Sources */,
+				EEAC2B1A2B19701600D74385 /* AirQualityDetailsViewModel.swift in Sources */,
 				104EB1742B173BF9006591A3 /* AirQualityViewController.swift in Sources */,
 				104EB1562B1738EE006591A3 /* AppDelegate.swift in Sources */,
 				EEB7EE172B1912BF00EEF557 /* AirQualityDetailsViewController.swift in Sources */,
