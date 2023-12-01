@@ -48,6 +48,17 @@ final class AirQualityDetailsViewController: UIViewController {
         return label
     }()
     
+    let city: String
+
+     init(city: String) {
+         self.city = city
+         super.init(nibName: nil, bundle: nil)
+     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,3 +87,8 @@ final class AirQualityDetailsViewController: UIViewController {
 }
 
 
+//// MARK: - Configure
+//func configure(with model: NoteDetails) {
+//    titleLabel.text = model.title
+//    descriptionLabel.text = model.description
+//}

@@ -344,6 +344,10 @@ final class AirQualityViewController: UIViewController {
         return label
     }()
     
+    private var city: DataClass?
+    
+    private let viewModel = AirQualityViewModel()
+    
     // MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -356,7 +360,8 @@ final class AirQualityViewController: UIViewController {
     private func setup() {
         addSubviews()
         setupConstraints()
-        setupCheckAirQualityButtonAction()
+        setupViewModelDelegate()
+        setupCheckAirQualityButton()
     }
     
     private func addSubviews() {
@@ -365,6 +370,7 @@ final class AirQualityViewController: UIViewController {
         setupCheckQualityStackView()
         setupHealthImpactsStackView()
         setupAirQualitySensorsStackView()
+        setupViewModelDelegate()
     }
     
     private func addMainSubview() {
@@ -478,11 +484,37 @@ final class AirQualityViewController: UIViewController {
         mainStackView.setCustomSpacing(16, after: soStackView)
     }
     
-    //TODO: - handle checkAirQualityButton.isEnabled = false
-    private func setupCheckAirQualityButtonAction() {
-        checkAirQualityButton.addAction(UIAction(title: "", handler: { [weak self] _ in
-            let detailsViewController = AirQualityDetailsViewController()
-            self?.navigationController?.pushViewController(detailsViewController, animated: true)
-        }), for: .touchUpInside)}
+    private func setupViewModelDelegate() {
+        viewModel.delegate = self
+    }
+    
+    private func setupCheckAirQualityButton() {
+        checkAirQualityButton.addAction(UIAction(title: "Check Air Quality", handler: { [weak self] action in
+            Task {
+                    guard let cityName = self?.locationTextField.text, !cityName.isEmpty else {
+                        print("Please, Provide Information")
+                        return
+                    }
+                    await self?.viewModel.fetchCity(for: cityName)
+                }
+        }), for: .touchUpInside)
+    }
 }
 
+//MARK: - AirQualityViewModelDelegate
+extension AirQualityViewController: AirQualityViewModelDelegate {
+    func cityFetched(_ city: DataClass) {
+        self.city = city
+    }
+    
+    func showError(_ error: Error) {
+        print("Sorry, only Los Angeles is available 🌝")
+    }
+    
+    func navigateToDetailsPage(with city: String) {
+        let detailsViewController = AirQualityDetailsViewController(city: city)
+        navigationController?.pushViewController(detailsViewController, animated: true)
+    }
+}
+                                                 
+                                                 
