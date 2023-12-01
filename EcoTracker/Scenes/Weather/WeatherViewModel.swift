@@ -7,18 +7,17 @@
 
 import NetworkManager
 
-protocol dataFetchDelegate {
+protocol DataFetchDelegate: AnyObject {
     func fetchCompleted() async
-    func fetchFailed(error: Error)
+    func fetchFailed(error: Error) async
 }
 
 class WeatherViewModel {
     private let endpoint = "https://api.openweathermap.org/data/2.5/weather"
     private let appId = "86be04ecd19df7742b46fe3f67bb2ba4"
     
-    
     var weatherInfo: WeatherDataModel? = nil
-    var delegate: dataFetchDelegate? = nil
+    weak var delegate: DataFetchDelegate? = nil
     
     func fetchData(long: String, lat: String, cityName: String) {
         if cityName == "" && (long == "" || lat == "") {
@@ -33,7 +32,7 @@ class WeatherViewModel {
                         await delegate?.fetchCompleted()
                     }
                 } catch {
-                    delegate?.fetchFailed(error: error)
+                    await delegate?.fetchFailed(error: error)
                 }
             }
         }

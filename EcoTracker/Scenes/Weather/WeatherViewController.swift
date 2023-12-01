@@ -24,6 +24,8 @@ final class WeatherViewController: UIViewController {
     private let coordinatesStackView = UIStackView()
     private let imagestackView = UIStackView()
     private let weatherImage = UIImageView()
+
+    private let defaultImageName = "sunny-cloudy"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +36,7 @@ final class WeatherViewController: UIViewController {
         setupDegreeLabel()
         setupPlaceNameLabel()
         setupGetInformationStackView()
-        seupImageStackView()
+        setupImageStackView()
         setupWeatherImage()
         setupConstrains()
     }
@@ -69,7 +71,7 @@ final class WeatherViewController: UIViewController {
         setupLongitudeTextField()
     }
     
-    func seupImageStackView() {
+    func setupImageStackView() {
         view.addSubview(imagestackView)
         imagestackView.translatesAutoresizingMaskIntoConstraints = false
         imagestackView.alignment = .center
@@ -78,7 +80,7 @@ final class WeatherViewController: UIViewController {
     // MARK: - Setup image
     func setupWeatherImage() {
         imagestackView.addArrangedSubview(weatherImage)
-        weatherImage.image = UIImage(named: "sunny-cloudy")
+        weatherImage.image = UIImage(named: defaultImageName)
     }
    
     // MARK: - Labels setups
@@ -136,12 +138,12 @@ final class WeatherViewController: UIViewController {
         getWeatherButton.backgroundColor = .buttonBackgroundColor
         getWeatherButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
         
-        getWeatherButton.addAction(UIAction(handler: { action in
-            let cityName = self.typeCityTextField.text
-            let long = self.longitudeTextField.text
-            let lat = self.latitudeTextField.text
+        getWeatherButton.addAction(UIAction(handler: { [weak self] _ in
+            let cityName = self?.typeCityTextField.text
+            let long = self?.longitudeTextField.text
+            let lat = self?.latitudeTextField.text
             
-            self.weatherViewModel.fetchData(long: long ?? "", lat: lat ?? "", cityName: cityName ?? "")
+            self?.weatherViewModel.fetchData(long: long ?? "", lat: lat ?? "", cityName: cityName ?? "")
         }), for: .touchUpInside)
     }
     
@@ -182,14 +184,20 @@ final class WeatherViewController: UIViewController {
     }
 }
 
-extension WeatherViewController: dataFetchDelegate {
+extension WeatherViewController: DataFetchDelegate {
     func fetchCompleted() async {
         await MainActor.run {
             self.reloadData()
         }
     }
 
-    func fetchFailed(error: Error) {
-        print (error)
+    func fetchFailed(error: Error) async {
+        await MainActor.run {
+            let alert = UIAlertController(title: "Failed", message: "Please enter corect information", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            }))
+            present(alert, animated: true)
+        }
     }
 }
