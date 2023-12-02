@@ -351,17 +351,20 @@ final class AirQualityViewController: UIViewController {
     // MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = UIColor.backgroundColor
         setup()
     }
     
     // MARK: - Private Methods
     private func setup() {
+        setupBackground()
         addSubviews()
         setupConstraints()
         setupViewModelDelegate()
         setupCheckAirQualityButton()
+    }
+    
+    private func setupBackground() {
+        view.backgroundColor = UIColor.backgroundColor
     }
     
     private func addSubviews() {
@@ -459,8 +462,8 @@ final class AirQualityViewController: UIViewController {
     
     private func setupCheckQualityComponentsConstraints() {
         NSLayoutConstraint.activate([
-            locationTextField.heightAnchor.constraint(equalToConstant: 44),
-            checkAirQualityButton.heightAnchor.constraint(equalToConstant: 44)
+            locationTextField.heightAnchor.constraint(equalToConstant: 48),
+            checkAirQualityButton.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
     

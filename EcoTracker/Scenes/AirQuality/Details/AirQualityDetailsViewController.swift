@@ -22,7 +22,7 @@ final class AirQualityDetailsViewController: UIViewController {
     
     private let cityTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "City"
         label.textColor = UIColor.white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 28, weight: .medium)
@@ -31,7 +31,7 @@ final class AirQualityDetailsViewController: UIViewController {
     
     private let airQualityIndex: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "AQI"
         label.textColor = UIColor(red: 96/255.0, green: 217/255.0, blue: 37/255.0, alpha: 1)
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 48, weight: .medium)
@@ -40,7 +40,7 @@ final class AirQualityDetailsViewController: UIViewController {
     
     private let airQualityIndexDescription: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "Description"
         label.textColor = UIColor.white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
@@ -64,15 +64,18 @@ final class AirQualityDetailsViewController: UIViewController {
     // MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = UIColor.backgroundColor
         setup()
     }
     
     // MARK: - Private Methods
     private func setup() {
+        setupBackground()
         addMainSubview()
         setupMainViewConstraints()
+    }
+    
+    private func setupBackground() {
+        view.backgroundColor = UIColor.backgroundColor
     }
     
     private func addMainSubview() {
